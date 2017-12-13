@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://ej_Interfaz/controles/EjemploControles.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ej_Interfaz/terminal/Terminal.tscn" type="PackedScene" id=2]
+
+[node name="EjemploIntegracion" type="HBoxContainer"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+alignment = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+
+rect/min_size = Vector2( 300, 0 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 510.0
+margin/bottom = 600.0
+
+[node name="EjemploTextos" parent="PanelContainer" instance=ExtResource( 1 )]
+
+anchor/right = 0
+anchor/bottom = 0
+margin/left = 7.0
+margin/top = 7.0
+margin/right = 503.0
+margin/bottom = 593.0
+
+[node name="PanelContainer1" type="PanelContainer" parent="."]
+
+rect/min_size = Vector2( 300, 0 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 514.0
+margin/top = 0.0
+margin/right = 1024.0
+margin/bottom = 600.0
+
+[node name="Terminal" parent="PanelContainer1" instance=ExtResource( 2 )]
+
+anchor/right = 0
+anchor/bottom = 0
+margin/left = 7.0
+margin/top = 7.0
+margin/right = 503.0
+margin/bottom = 593.0
+
+

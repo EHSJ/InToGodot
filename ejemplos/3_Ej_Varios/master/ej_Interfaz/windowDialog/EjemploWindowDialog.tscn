@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://auxiliares/GradientesCuadrados.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+
+[node name="WindowDialog" type="WindowDialog" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 347.0
+margin/top = 241.0
+margin/right = 796.0
+margin/bottom = 437.0
+popup/exclusive = false
+window/title = "Titulo"
+
+[node name="Label" type="Label" parent="WindowDialog"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 53.0
+margin/top = 59.0
+margin/right = 93.0
+margin/bottom = 73.0
+text = "Texto..."
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ColorFrame" type="ColorFrame" parent="WindowDialog"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 75.0
+margin/top = 101.0
+margin/right = 397.0
+margin/bottom = 141.0
+color = Color( 0.566406, 0.177002, 0.177002, 1 )
+
+[node name="Viewport" type="Viewport" parent="WindowDialog"]
+
+rect = Rect2( 0, 0, 449, 196 )
+own_world = false
+world = null
+transparent_bg = false
+render_target/enabled = false
+render_target/v_flip = false
+render_target/clear_on_new_frame = true
+render_target/filter = false
+render_target/gen_mipmaps = false
+render_target/update_mode = 2
+audio_listener/enable_2d = false
+audio_listener/enable_3d = false
+physics/object_picking = false
+gui/disable_input = false
+
+[node name="Sprite" type="Sprite" parent="WindowDialog/Viewport"]
+
+script/script = ExtResource( 1 )
+resolucion = 32
+colores = 1
+restante = 0.5
+
+

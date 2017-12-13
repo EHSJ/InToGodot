@@ -1,0 +1,119 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://ej_Interfaz/tree/Ejemplo_Tree.gd" type="Script" id=1]
+
+[node name="EjemploTree" type="VBoxContainer"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 3.0
+margin/top = 3.0
+margin/right = 3.0
+margin/bottom = 3.0
+custom_constants/separation = 5
+alignment = 0
+
+[node name="LabelTitulo" type="Label" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1018.0
+margin/bottom = 14.0
+text = "Ejemplo Tree."
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Tree" type="Tree" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 19.0
+margin/right = 1018.0
+margin/bottom = 370.0
+script/script = ExtResource( 1 )
+consolaPath = NodePath("../PanelConsola/Consola")
+
+[node name="PanelControles" type="HBoxContainer" parent="."]
+
+rect/min_size = Vector2( 20, 0 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 375.0
+margin/right = 1018.0
+margin/bottom = 389.0
+alignment = 0
+
+[node name="LabelMenu" type="Label" parent="PanelControles"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 14.0
+text = "Menú:"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="PanelConsola" type="Panel" parent="."]
+
+rect/min_size = Vector2( 0, 200 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 394.0
+margin/right = 1018.0
+margin/bottom = 594.0
+
+[node name="Consola" type="RichTextLabel" parent="PanelConsola"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 5.0
+margin/top = 5.0
+margin/right = 5.0
+margin/bottom = 5.0
+bbcode/enabled = false
+bbcode/bbcode = ""
+visible_characters = -1
+percent_visible = 1.0
+
+[connection signal="button_pressed" from="Tree" to="Tree" method="_on_Tree_button_pressed"]
+
+[connection signal="cell_selected" from="Tree" to="Tree" method="_on_Tree_cell_selected"]
+
+[connection signal="custom_popup_edited" from="Tree" to="Tree" method="_on_Tree_custom_popup_edited"]
+
+[connection signal="item_activated" from="Tree" to="Tree" method="_on_Tree_item_activated"]
+
+[connection signal="item_edited" from="Tree" to="Tree" method="_on_Tree_item_edited"]
+
+[connection signal="item_selected" from="Tree" to="Tree" method="_on_Tree_item_selected"]
+
+

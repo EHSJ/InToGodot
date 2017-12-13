@@ -1,0 +1,1296 @@
+[gd_scene load_steps=18 format=1]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://recursos/degradados/degradadoArcoiris.tres" type="ColorRamp" id=2]
+[ext_resource path="res://auxiliares/ZonaCircular.gd" type="Script" id=3]
+[ext_resource path="res://recursos/estilos/cyanClaro.tres" type="StyleBox" id=4]
+[ext_resource path="res://ej_Node2D/particulas2D/ControladorBotonera.gd" type="Script" id=5]
+[ext_resource path="res://recursos/gfx/clips/llama.png" type="Texture" id=6]
+[ext_resource path="res://recursos/degradados/degradadoFuego.tres" type="ColorRamp" id=7]
+[ext_resource path="res://recursos/gfx/clips/voluta.png" type="Texture" id=8]
+[ext_resource path="res://recursos/degradados/degradadoHumo.tres" type="ColorRamp" id=9]
+[ext_resource path="res://recursos/estilos/cyanVVS.tres" type="StyleBox" id=10]
+[ext_resource path="res://ej_Node2D/particulas2D/ControladorInterruptores.gd" type="Script" id=11]
+[ext_resource path="res://recursos/estilos/naranjaWarning2.tres" type="StyleBox" id=12]
+[ext_resource path="res://ej_Node2D/particulas2D/ControladorSimple.gd" type="Script" id=13]
+[ext_resource path="res://ej_Node2D/particulas2D/ControladorComplejo.gd" type="Script" id=14]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "Emisor"
+length = 8.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:transform/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 2, 4, 6, 8 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -200, 0 ), Vector2( 0, 100 ), Vector2( 200, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "Atractor"
+length = 8.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:transform/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 2, 4, 6, 8 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -200, -150 ), Vector2( 200, -150 ), Vector2( 200, 150 ), Vector2( -200, 150 ), Vector2( -200, -150 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource/name = "Repulsor"
+length = 8.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:transform/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 2, 4, 6, 8 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 200, 150 ), Vector2( -200, 150 ), Vector2( -200, -150 ), Vector2( 200, -150 ), Vector2( 200, 150 ) ]
+}
+
+[node name="EjemploParticulas" type="Control"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+
+[node name="ZonaPruebas" type="Control" parent="."]
+
+anchor/left = 2
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.35
+margin/top = 0.0
+margin/right = 4.0
+margin/bottom = 0.0
+
+[node name="ControlCentrado" type="Control" parent="ZonaPruebas"]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 10.0
+margin/top = 10.0
+margin/right = 0.399994
+margin/bottom = 0.0
+
+[node name="Particles2D" type="Particles2D" parent="ZonaPruebas/ControlCentrado"]
+
+config/amount = 100
+config/lifetime = 10.0
+config/process_mode = 1
+config/local_space = false
+config/texture = ExtResource( 1 )
+params/direction = 195.0
+params/spread = 0.0
+params/linear_velocity = 50.0
+params/spin_velocity = 1.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 0.1
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/direction = 1.0
+randomness/spread = 1.0
+randomness/spin_velocity = 1.0
+color/color_ramp = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ZonaPruebas/ControlCentrado/Particles2D"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/Emisor = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "Emisor"
+
+[node name="ParticleAttractor2D" type="ParticleAttractor2D" parent="ZonaPruebas/ControlCentrado"]
+
+transform/pos = Vector2( 0, -150 )
+enabled = true
+radius = 100.0
+disable_radius = 0.0
+gravity = 5.0
+absorption = 0.0
+particles_path = NodePath("../Particles2D")
+
+[node name="zonaCircular" type="Sprite" parent="ZonaPruebas/ControlCentrado/ParticleAttractor2D"]
+
+script/script = ExtResource( 3 )
+cBorde = Color( 1, 1, 1, 0.501961 )
+cRelleno = Color( 0.113647, 0.233673, 0.59375, 0.25098 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ZonaPruebas/ControlCentrado/ParticleAttractor2D"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/Atractor = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "Atractor"
+
+[node name="ParticleAttractor2D1" type="ParticleAttractor2D" parent="ZonaPruebas/ControlCentrado"]
+
+transform/pos = Vector2( 0, 150 )
+enabled = true
+radius = 100.0
+disable_radius = 0.0
+gravity = -5.0
+absorption = 0.0
+particles_path = NodePath("../Particles2D")
+
+[node name="zonaCircular" type="Sprite" parent="ZonaPruebas/ControlCentrado/ParticleAttractor2D1"]
+
+script/script = ExtResource( 3 )
+cBorde = Color( 1, 1, 1, 0.501961 )
+cRelleno = Color( 0.59375, 0.113647, 0.31619, 0.25098 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ZonaPruebas/ControlCentrado/ParticleAttractor2D1"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/Repulsor = SubResource( 3 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "Repulsor"
+
+[node name="GuiParticulas" type="Panel" parent="."]
+
+anchor/bottom = 1
+rect/min_size = Vector2( 360, 0 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 360.0
+margin/bottom = 0.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GuiParticulas"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+scroll/horizontal = false
+scroll/vertical = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GuiParticulas/ScrollContainer"]
+
+rect/min_size = Vector2( 360, 0 )
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 360.0
+margin/bottom = 545.0
+alignment = 0
+
+[node name="Titulo" type="Label" parent="GuiParticulas/ScrollContainer/VBoxContainer"]
+
+rect/min_size = Vector2( 0, 20 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 360.0
+margin/bottom = 20.0
+text = "Parámetros del Generador de partículas"
+align = 1
+valign = 2
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Botonera" type="Panel" parent="GuiParticulas/ScrollContainer/VBoxContainer"]
+
+rect/min_size = Vector2( 0, 35 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 24.0
+margin/right = 360.0
+margin/bottom = 59.0
+custom_styles/panel = ExtResource( 4 )
+script/script = ExtResource( 5 )
+particulasPath = NodePath("../../../../ZonaPruebas/ControlCentrado/Particles2D")
+panelBanderasPath = NodePath("../Banderas")
+texturaPruebas = ExtResource( 1 )
+degradadoPruebas = ExtResource( 2 )
+texturaFuego = ExtResource( 6 )
+degradadoFuego = ExtResource( 7 )
+texturaHumo = ExtResource( 8 )
+degradadoHumo = ExtResource( 9 )
+
+[node name="HBoxContainer1" type="HBoxContainer" parent="GuiParticulas/ScrollContainer/VBoxContainer/Botonera"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 3.0
+margin/top = 3.0
+margin/right = 3.0
+margin/bottom = 3.0
+alignment = 1
+
+[node name="BotonPruebas" type="Button" parent="GuiParticulas/ScrollContainer/VBoxContainer/Botonera/HBoxContainer1"]
+
+hint/tooltip = "Apariencia para Pruebas"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 115.0
+margin/bottom = 29.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Pruebas"
+flat = false
+
+[node name="BotonFuego" type="Button" parent="GuiParticulas/ScrollContainer/VBoxContainer/Botonera/HBoxContainer1"]
+
+hint/tooltip = "Apariencia para Fuego"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 119.0
+margin/top = 0.0
+margin/right = 234.0
+margin/bottom = 29.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Fuego"
+flat = false
+
+[node name="BotonHumo" type="Button" parent="GuiParticulas/ScrollContainer/VBoxContainer/Botonera/HBoxContainer1"]
+
+hint/tooltip = "Apariencia para Humo"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 238.0
+margin/top = 0.0
+margin/right = 354.0
+margin/bottom = 29.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Humo"
+flat = false
+
+[node name="Banderas" type="Panel" parent="GuiParticulas/ScrollContainer/VBoxContainer"]
+
+rect/min_size = Vector2( 200, 110 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 63.0
+margin/right = 360.0
+margin/bottom = 173.0
+custom_styles/panel = ExtResource( 10 )
+script/script = ExtResource( 11 )
+particulasPath = NodePath("../../../../ZonaPruebas/ControlCentrado/Particles2D")
+attractPath = NodePath("../../../../ZonaPruebas/ControlCentrado/ParticleAttractor2D")
+repelPath = NodePath("../../../../ZonaPruebas/ControlCentrado/ParticleAttractor2D1")
+
+[node name="HBoxContainer1" type="HBoxContainer" parent="GuiParticulas/ScrollContainer/VBoxContainer/Banderas"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GuiParticulas/ScrollContainer/VBoxContainer/Banderas/HBoxContainer1"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 33.0
+margin/top = 0.0
+margin/right = 177.0
+margin/bottom = 110.0
+alignment = 1
+
+[node name="activo" type="CheckButton" parent="GuiParticulas/ScrollContainer/VBoxContainer/Banderas/HBoxContainer1/VBoxContainer"]
+
+hint/tooltip = "Emisor Activo"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 5.0
+margin/right = 144.0
+margin/bottom = 27.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Activo"
+flat = false
+align = 0
+
+[node name="ramp" type="CheckButton" parent="GuiParticulas/ScrollContainer/VBoxContainer/Banderas/HBoxContainer1/VBoxContainer"]
+
+hint/tooltip = "Degradado de color"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 31.0
+margin/right = 144.0
+margin/bottom = 53.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Degradado"
+flat = false
+align = 0
+
+[node name="local" type="CheckButton" parent="GuiParticulas/ScrollContainer/VBoxContainer/Banderas/HBoxContainer1/VBoxContainer"]
+
+hint/tooltip = "Coordenadas locales:
+	Las partículas se desplazan con el emisor.
+	Probar con la animación."
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 57.0
+margin/right = 144.0
+margin/bottom = 79.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Local"
+flat = false
+align = 0
+
+[node name="campos" type="CheckButton" parent="GuiParticulas/ScrollContainer/VBoxContainer/Banderas/HBoxContainer1/VBoxContainer"]
+
+hint/tooltip = "Campos de fuerza"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 83.0
+margin/right = 144.0
+margin/bottom = 105.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Campos"
+flat = false
+align = 0
+
+[node name="VSeparator" type="VSeparator" parent="GuiParticulas/ScrollContainer/VBoxContainer/Banderas/HBoxContainer1"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 181.0
+margin/top = 0.0
+margin/right = 184.0
+margin/bottom = 110.0
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="GuiParticulas/ScrollContainer/VBoxContainer/Banderas/HBoxContainer1"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 188.0
+margin/top = 0.0
+margin/right = 327.0
+margin/bottom = 110.0
+alignment = 1
+
+[node name="textura" type="CheckButton" parent="GuiParticulas/ScrollContainer/VBoxContainer/Banderas/HBoxContainer1/VBoxContainer1"]
+
+hint/tooltip = "Textura de las partículas"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 5.0
+margin/right = 139.0
+margin/bottom = 27.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Textura"
+flat = false
+align = 0
+
+[node name="gravedad" type="CheckButton" parent="GuiParticulas/ScrollContainer/VBoxContainer/Banderas/HBoxContainer1/VBoxContainer1"]
+
+hint/tooltip = "Las partículas son afectadas por la gravedad"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 31.0
+margin/right = 139.0
+margin/bottom = 53.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Gravedad"
+flat = false
+align = 0
+
+[node name="animacion" type="CheckButton" parent="GuiParticulas/ScrollContainer/VBoxContainer/Banderas/HBoxContainer1/VBoxContainer1"]
+
+hint/tooltip = "Animar el generador de partículas"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 57.0
+margin/right = 139.0
+margin/bottom = 79.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Animar P."
+flat = false
+align = 0
+
+[node name="animacion1" type="CheckButton" parent="GuiParticulas/ScrollContainer/VBoxContainer/Banderas/HBoxContainer1/VBoxContainer1"]
+
+hint/tooltip = "Animar los Atractores o campos de fuerza"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 83.0
+margin/right = 139.0
+margin/bottom = 105.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Animar A."
+flat = false
+align = 0
+
+[node name="Cantidad" type="Panel" parent="GuiParticulas/ScrollContainer/VBoxContainer"]
+
+editor/display_folded = true
+rect/min_size = Vector2( 200, 40 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 177.0
+margin/right = 360.0
+margin/bottom = 217.0
+custom_styles/panel = ExtResource( 12 )
+script/script = ExtResource( 13 )
+objetivoPath = NodePath("../../../../ZonaPruebas/ControlCentrado/Particles2D")
+minimo = 1.0
+maximo = 1000.0
+paso = 10.0
+inicial = 100.0
+setter = "set_amount"
+
+[node name="Label" type="Label" parent="GuiParticulas/ScrollContainer/VBoxContainer/Cantidad"]
+
+anchor/right = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 3.0
+margin/top = 3.0
+margin/right = 3.0
+margin/bottom = 17.0
+text = "Nº de Partículas"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HSlider" type="HSlider" parent="GuiParticulas/ScrollContainer/VBoxContainer/Cantidad"]
+
+anchor/right = 2
+anchor/bottom = 1
+hint/tooltip = "ass"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 5.0
+margin/top = 17.0
+margin/right = 0.7
+margin/bottom = 2.0
+range/min = 25.0
+range/max = 250.0
+range/step = 5.0
+range/page = 0.0
+range/value = 25.0
+range/exp_edit = false
+range/rounded = false
+tick_count = 10
+ticks_on_borders = true
+focus_mode = 2
+
+[node name="SpinBox" type="SpinBox" parent="GuiParticulas/ScrollContainer/VBoxContainer/Cantidad"]
+
+anchor/left = 2
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.71
+margin/top = 10.0
+margin/right = 4.93994
+margin/bottom = 3.0
+range/min = 25.0
+range/max = 250.0
+range/step = 10.0
+range/page = 0.0
+range/value = 25.0
+range/exp_edit = false
+range/rounded = false
+editable = true
+prefix = ""
+suffix = "particulas"
+
+[node name="Vida" type="Panel" parent="GuiParticulas/ScrollContainer/VBoxContainer"]
+
+editor/display_folded = true
+rect/min_size = Vector2( 200, 40 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 221.0
+margin/right = 360.0
+margin/bottom = 261.0
+custom_styles/panel = ExtResource( 4 )
+script/script = ExtResource( 13 )
+objetivoPath = NodePath("../../../../ZonaPruebas/ControlCentrado/Particles2D")
+minimo = 1.0
+maximo = 60.0
+paso = 1.0
+inicial = 5.0
+setter = "set_lifetime"
+
+[node name="Label" type="Label" parent="GuiParticulas/ScrollContainer/VBoxContainer/Vida"]
+
+anchor/right = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 3.0
+margin/top = 3.0
+margin/right = 3.0
+margin/bottom = 17.0
+text = "Tiempo de Vida"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HSlider" type="HSlider" parent="GuiParticulas/ScrollContainer/VBoxContainer/Vida"]
+
+anchor/right = 2
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 5.0
+margin/top = 17.0
+margin/right = 0.7
+margin/bottom = 3.0
+range/min = 5.0
+range/max = 120.0
+range/step = 5.0
+range/page = 0.0
+range/value = 25.0
+range/exp_edit = false
+range/rounded = false
+tick_count = 10
+ticks_on_borders = true
+focus_mode = 2
+
+[node name="SpinBox" type="SpinBox" parent="GuiParticulas/ScrollContainer/VBoxContainer/Vida"]
+
+anchor/left = 2
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.71
+margin/top = 10.0
+margin/right = 3.96997
+margin/bottom = 3.0
+range/min = 5.0
+range/max = 120.0
+range/step = 10.0
+range/page = 0.0
+range/value = 25.0
+range/exp_edit = false
+range/rounded = false
+editable = true
+prefix = ""
+suffix = "segundos"
+
+[node name="Explosividad" type="Panel" parent="GuiParticulas/ScrollContainer/VBoxContainer"]
+
+editor/display_folded = true
+rect/min_size = Vector2( 200, 40 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 265.0
+margin/right = 360.0
+margin/bottom = 305.0
+custom_styles/panel = ExtResource( 10 )
+script/script = ExtResource( 13 )
+objetivoPath = NodePath("../../../../ZonaPruebas/ControlCentrado/Particles2D")
+minimo = 0.1
+maximo = 1.0
+paso = 0.1
+inicial = 1.0
+setter = "set_explosiveness"
+
+[node name="Label" type="Label" parent="GuiParticulas/ScrollContainer/VBoxContainer/Explosividad"]
+
+anchor/right = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 3.0
+margin/top = 3.0
+margin/right = 3.0
+margin/bottom = 17.0
+text = "Explosividad"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HSlider" type="HSlider" parent="GuiParticulas/ScrollContainer/VBoxContainer/Explosividad"]
+
+anchor/right = 2
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 5.0
+margin/top = 17.0
+margin/right = 0.74
+margin/bottom = 2.0
+range/min = 0.1
+range/max = 1.0
+range/step = 0.05
+range/page = 0.0
+range/value = 1.0
+range/exp_edit = false
+range/rounded = false
+tick_count = 10
+ticks_on_borders = true
+focus_mode = 2
+
+[node name="SpinBox" type="SpinBox" parent="GuiParticulas/ScrollContainer/VBoxContainer/Explosividad"]
+
+anchor/left = 2
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.75
+margin/top = 10.0
+margin/right = 3.0
+margin/bottom = 3.0
+range/min = 0.1
+range/max = 1.0
+range/step = 0.05
+range/page = 0.0
+range/value = 1.0
+range/exp_edit = false
+range/rounded = false
+editable = true
+prefix = ""
+suffix = ""
+
+[node name="TamInicial" type="Panel" parent="GuiParticulas/ScrollContainer/VBoxContainer"]
+
+editor/display_folded = true
+rect/min_size = Vector2( 200, 40 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 309.0
+margin/right = 360.0
+margin/bottom = 349.0
+custom_styles/panel = ExtResource( 4 )
+script/script = ExtResource( 14 )
+objetivoPath = NodePath("../../../../ZonaPruebas/ControlCentrado/Particles2D")
+minimo = 0.1
+maximo = 50.0
+paso = 0.1
+inicial = 0.2
+parametro = 11
+aleatorio = false
+
+[node name="Label" type="Label" parent="GuiParticulas/ScrollContainer/VBoxContainer/TamInicial"]
+
+anchor/right = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 3.0
+margin/top = 3.0
+margin/right = 3.0
+margin/bottom = 17.0
+text = "Tamaño inicial"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HSlider" type="HSlider" parent="GuiParticulas/ScrollContainer/VBoxContainer/TamInicial"]
+
+anchor/right = 2
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 5.0
+margin/top = 17.0
+margin/right = 0.74
+margin/bottom = 2.0
+range/min = 0.1
+range/max = 50.0
+range/step = 1.0
+range/page = 0.0
+range/value = 1.0
+range/exp_edit = false
+range/rounded = false
+tick_count = 10
+ticks_on_borders = true
+focus_mode = 2
+
+[node name="SpinBox" type="SpinBox" parent="GuiParticulas/ScrollContainer/VBoxContainer/TamInicial"]
+
+anchor/left = 2
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.75
+margin/top = 10.0
+margin/right = 3.0
+margin/bottom = 3.0
+range/min = 0.1
+range/max = 50.0
+range/step = 1.0
+range/page = 0.0
+range/value = 1.0
+range/exp_edit = false
+range/rounded = false
+editable = true
+prefix = ""
+suffix = ""
+
+[node name="TamFinal" type="Panel" parent="GuiParticulas/ScrollContainer/VBoxContainer"]
+
+editor/display_folded = true
+rect/min_size = Vector2( 200, 40 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 353.0
+margin/right = 360.0
+margin/bottom = 393.0
+custom_styles/panel = ExtResource( 10 )
+script/script = ExtResource( 14 )
+objetivoPath = NodePath("../../../../ZonaPruebas/ControlCentrado/Particles2D")
+minimo = 0.1
+maximo = 50.0
+paso = 0.1
+inicial = 1.0
+parametro = 12
+aleatorio = false
+
+[node name="Label" type="Label" parent="GuiParticulas/ScrollContainer/VBoxContainer/TamFinal"]
+
+anchor/right = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 3.0
+margin/top = 3.0
+margin/right = 3.0
+margin/bottom = 17.0
+text = "Tamaño final"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HSlider" type="HSlider" parent="GuiParticulas/ScrollContainer/VBoxContainer/TamFinal"]
+
+anchor/right = 2
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 5.0
+margin/top = 17.0
+margin/right = 0.74
+margin/bottom = 2.0
+range/min = 0.1
+range/max = 50.0
+range/step = 1.0
+range/page = 0.0
+range/value = 1.0
+range/exp_edit = false
+range/rounded = false
+tick_count = 10
+ticks_on_borders = true
+focus_mode = 2
+
+[node name="SpinBox" type="SpinBox" parent="GuiParticulas/ScrollContainer/VBoxContainer/TamFinal"]
+
+anchor/left = 2
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.75
+margin/top = 10.0
+margin/right = 3.0
+margin/bottom = 3.0
+range/min = 0.1
+range/max = 50.0
+range/step = 1.0
+range/page = 0.0
+range/value = 1.0
+range/exp_edit = false
+range/rounded = false
+editable = true
+prefix = ""
+suffix = ""
+
+[node name="Direccion" type="Panel" parent="GuiParticulas/ScrollContainer/VBoxContainer"]
+
+editor/display_folded = true
+rect/min_size = Vector2( 200, 40 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 397.0
+margin/right = 360.0
+margin/bottom = 437.0
+custom_styles/panel = ExtResource( 4 )
+script/script = ExtResource( 14 )
+objetivoPath = NodePath("../../../../ZonaPruebas/ControlCentrado/Particles2D")
+minimo = 0.0
+maximo = 360.0
+paso = 15.0
+inicial = 180.0
+parametro = 0
+aleatorio = false
+
+[node name="Label" type="Label" parent="GuiParticulas/ScrollContainer/VBoxContainer/Direccion"]
+
+anchor/right = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 3.0
+margin/top = 3.0
+margin/right = 3.0
+margin/bottom = 17.0
+text = "Direccion"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HSlider" type="HSlider" parent="GuiParticulas/ScrollContainer/VBoxContainer/Direccion"]
+
+anchor/right = 2
+anchor/bottom = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 5.0
+margin/top = 17.0
+margin/right = 0.74
+margin/bottom = -13.0
+range/min = -180.0
+range/max = 180.0
+range/step = 10.0
+range/page = 0.0
+range/value = 0.0
+range/exp_edit = false
+range/rounded = false
+tick_count = 10
+ticks_on_borders = true
+focus_mode = 2
+
+[node name="SpinBox" type="SpinBox" parent="GuiParticulas/ScrollContainer/VBoxContainer/Direccion"]
+
+anchor/left = 2
+anchor/right = 1
+anchor/bottom = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.75
+margin/top = 8.0
+margin/right = 5.0
+margin/bottom = -2.0
+range/min = -180.0
+range/max = 180.0
+range/step = 10.0
+range/page = 0.0
+range/value = 0.0
+range/exp_edit = false
+range/rounded = false
+editable = true
+prefix = ""
+suffix = "º"
+
+[node name="Spread" type="Panel" parent="GuiParticulas/ScrollContainer/VBoxContainer"]
+
+editor/display_folded = true
+rect/min_size = Vector2( 200, 40 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 441.0
+margin/right = 360.0
+margin/bottom = 481.0
+custom_styles/panel = ExtResource( 10 )
+script/script = ExtResource( 14 )
+objetivoPath = NodePath("../../../../ZonaPruebas/ControlCentrado/Particles2D")
+minimo = 0.0
+maximo = 180.0
+paso = 5.0
+inicial = 30.0
+parametro = 1
+aleatorio = false
+
+[node name="Label" type="Label" parent="GuiParticulas/ScrollContainer/VBoxContainer/Spread"]
+
+anchor/right = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 3.0
+margin/top = 3.0
+margin/right = 3.0
+margin/bottom = 17.0
+text = "Abertura"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HSlider" type="HSlider" parent="GuiParticulas/ScrollContainer/VBoxContainer/Spread"]
+
+anchor/right = 2
+anchor/bottom = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 5.0
+margin/top = 17.0
+margin/right = 0.74
+margin/bottom = 1.0
+range/min = 0.0
+range/max = 180.0
+range/step = 10.0
+range/page = 0.0
+range/value = 0.0
+range/exp_edit = false
+range/rounded = false
+tick_count = 10
+ticks_on_borders = true
+focus_mode = 2
+
+[node name="SpinBox" type="SpinBox" parent="GuiParticulas/ScrollContainer/VBoxContainer/Spread"]
+
+anchor/left = 2
+anchor/right = 1
+anchor/bottom = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.75
+margin/top = 8.0
+margin/right = 5.0
+margin/bottom = -2.0
+range/min = 0.0
+range/max = 180.0
+range/step = 10.0
+range/page = 0.0
+range/value = 0.0
+range/exp_edit = false
+range/rounded = false
+editable = true
+prefix = ""
+suffix = "º"
+
+[node name="Velocidad" type="Panel" parent="GuiParticulas/ScrollContainer/VBoxContainer"]
+
+editor/display_folded = true
+rect/min_size = Vector2( 200, 60 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 485.0
+margin/right = 360.0
+margin/bottom = 545.0
+custom_styles/panel = ExtResource( 4 )
+script/script = ExtResource( 14 )
+objetivoPath = NodePath("../../../../ZonaPruebas/ControlCentrado/Particles2D")
+minimo = 1.0
+maximo = 100.0
+paso = 1.0
+inicial = 50.0
+parametro = 2
+aleatorio = true
+
+[node name="Label" type="Label" parent="GuiParticulas/ScrollContainer/VBoxContainer/Velocidad"]
+
+anchor/right = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 3.0
+margin/top = 3.0
+margin/right = 3.0
+margin/bottom = 17.0
+text = "Velocidad + Aleatoreidad"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HSlider" type="HSlider" parent="GuiParticulas/ScrollContainer/VBoxContainer/Velocidad"]
+
+anchor/right = 2
+anchor/bottom = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 5.0
+margin/top = 17.0
+margin/right = 0.74
+margin/bottom = -3.0
+range/min = 0.0
+range/max = 100.0
+range/step = 1.0
+range/page = 0.0
+range/value = 0.0
+range/exp_edit = false
+range/rounded = false
+tick_count = 10
+ticks_on_borders = true
+focus_mode = 2
+
+[node name="SpinBox" type="SpinBox" parent="GuiParticulas/ScrollContainer/VBoxContainer/Velocidad"]
+
+anchor/left = 2
+anchor/right = 1
+anchor/bottom = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.75
+margin/top = 8.0
+margin/right = 5.0
+margin/bottom = -2.0
+range/min = 0.0
+range/max = 100.0
+range/step = 1.0
+range/page = 0.0
+range/value = 0.0
+range/exp_edit = false
+range/rounded = false
+editable = true
+prefix = ""
+suffix = ""
+
+[node name="RandSlider" type="HSlider" parent="GuiParticulas/ScrollContainer/VBoxContainer/Velocidad"]
+
+anchor/top = 3
+anchor/right = 2
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 5.0
+margin/top = -6.0
+margin/right = 0.74
+margin/bottom = 2.0
+range/min = 0.0
+range/max = 1.0
+range/step = 0.05
+range/page = 0.0
+range/value = 0.0
+range/exp_edit = false
+range/rounded = false
+tick_count = 10
+ticks_on_borders = true
+focus_mode = 2
+
+[node name="RandSpin" type="SpinBox" parent="GuiParticulas/ScrollContainer/VBoxContainer/Velocidad"]
+
+anchor/left = 2
+anchor/top = 3
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.75
+margin/top = -4.0
+margin/right = 4.0
+margin/bottom = 2.0
+range/min = 0.0
+range/max = 1.0
+range/step = 0.05
+range/page = 0.0
+range/value = 0.0
+range/exp_edit = false
+range/rounded = false
+editable = true
+prefix = ""
+suffix = ""
+
+[connection signal="pressed" from="GuiParticulas/ScrollContainer/VBoxContainer/Botonera/HBoxContainer1/BotonPruebas" to="GuiParticulas/ScrollContainer/VBoxContainer/Botonera" method="_on_BotonPruebas_pressed"]
+
+[connection signal="pressed" from="GuiParticulas/ScrollContainer/VBoxContainer/Botonera/HBoxContainer1/BotonFuego" to="GuiParticulas/ScrollContainer/VBoxContainer/Botonera" method="_on_BotonFuego_pressed"]
+
+[connection signal="pressed" from="GuiParticulas/ScrollContainer/VBoxContainer/Botonera/HBoxContainer1/BotonHumo" to="GuiParticulas/ScrollContainer/VBoxContainer/Botonera" method="_on_BotonHumo_pressed"]
+
+

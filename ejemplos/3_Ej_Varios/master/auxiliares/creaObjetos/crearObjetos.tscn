@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node
+
+export (NodePath) var escena
+onready var cubo = load( \"res://ej_Node2D/nivel/ObjetoPrueba.tscn\" )
+var color = 0
+
+func _ready():
+	set_process_input( true )
+
+func _input(event):
+	if (event.type == InputEvent.MOUSE_BUTTON):
+		if (event.button_index == BUTTON_RIGHT):
+			if(Input.is_mouse_button_pressed(BUTTON_RIGHT)):
+				var instancia = cubo.instance()
+				instancia.set_pos( get_parent().get_pos() )
+				instancia.get_node(\"Sprite\").colores = color
+				instancia.get_node(\"Sprite\").restante = rand_range(0.0,1.0)
+
+				color += 1
+				if (color == 3): color = 0
+				get_node(escena).add_child( instancia )
+"
+
+[node name="CreaObjetos" type="Node"]
+
+script/script = SubResource( 1 )
+escena = NodePath("../..")
+
+

@@ -1,0 +1,738 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://recursos/fuentes/HelveticaNeue-Roman22.fnt" type="BitmapFont" id=1]
+[ext_resource path="res://recursos/estilos/cyanClaro.tres" type="StyleBox" id=2]
+[ext_resource path="res://ej_Interfaz/controles/CicloTextos.gd" type="Script" id=3]
+[ext_resource path="res://recursos/fuentes/HelveticaNeue-Roman14.fnt" type="BitmapFont" id=4]
+[ext_resource path="res://recursos/estilos/cyanVVS.tres" type="StyleBox" id=5]
+[ext_resource path="res://recursos/estilos/naranjaSombra.tres" type="StyleBox" id=6]
+[ext_resource path="res://ej_Interfaz/controles/Rangos.gd" type="Script" id=7]
+
+[node name="EjemploTextos" type="Panel"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 3.0
+margin/top = 3.0
+margin/right = 3.0
+margin/bottom = 3.0
+
+[node name="VBoxContainer 2" type="VBoxContainer" parent="."]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 5.0
+margin/top = 5.0
+margin/right = 5.0
+margin/bottom = -934.0
+alignment = 0
+
+[node name="Titulo" type="Label" parent="VBoxContainer 2"]
+
+rect/min_size = Vector2( 0, 35 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1008.0
+margin/bottom = 35.0
+custom_fonts/font = ExtResource( 1 )
+text = "Ejemplo de Controles"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Ej_CicloTxt" type="Panel" parent="VBoxContainer 2"]
+
+rect/min_size = Vector2( 0, 115 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 39.0
+margin/right = 1008.0
+margin/bottom = 154.0
+custom_styles/panel = ExtResource( 2 )
+script/script = ExtResource( 3 )
+
+[node name="lista" type="VBoxContainer" parent="VBoxContainer 2/Ej_CicloTxt"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 5.0
+margin/top = 5.0
+margin/right = 5.0
+margin/bottom = 5.0
+alignment = 0
+
+[node name="Info" type="Label" parent="VBoxContainer 2/Ej_CicloTxt/lista"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 998.0
+margin/bottom = 14.0
+custom_fonts/font = ExtResource( 4 )
+text = "Ejemplo cambio de Textos"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer 2/Ej_CicloTxt/lista"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 18.0
+margin/right = 998.0
+margin/bottom = 21.0
+
+[node name="Label" type="Label" parent="VBoxContainer 2/Ej_CicloTxt/lista"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 25.0
+margin/right = 998.0
+margin/bottom = 39.0
+custom_fonts/font = ExtResource( 4 )
+text = "Etiqueta"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer 2/Ej_CicloTxt/lista"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 43.0
+margin/right = 998.0
+margin/bottom = 67.0
+custom_fonts/font = ExtResource( 4 )
+text = "Texto LineEdit"
+placeholder/text = "Texto de recoradtorio.."
+placeholder/alpha = 0.6
+align = 1
+focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
+
+[node name="Button" type="Button" parent="VBoxContainer 2/Ej_CicloTxt/lista"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 71.0
+margin/right = 998.0
+margin/bottom = 100.0
+custom_fonts/font = ExtResource( 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Intercambiar!"
+flat = false
+
+[node name="Ej_Botones" type="Panel" parent="VBoxContainer 2"]
+
+rect/min_size = Vector2( 0, 150 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 158.0
+margin/right = 1008.0
+margin/bottom = 308.0
+custom_styles/panel = ExtResource( 2 )
+script/script = ExtResource( 3 )
+
+[node name="lista" type="VBoxContainer" parent="VBoxContainer 2/Ej_Botones"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 5.0
+margin/top = 5.0
+margin/right = 5.0
+margin/bottom = -30.0
+alignment = 0
+
+[node name="Info" type="Label" parent="VBoxContainer 2/Ej_Botones/lista"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 998.0
+margin/bottom = 14.0
+custom_fonts/font = ExtResource( 4 )
+text = "Ejemplo de Botones"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer 2/Ej_Botones/lista"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 18.0
+margin/right = 998.0
+margin/bottom = 21.0
+
+[node name="VBoxContainer" type="HBoxContainer" parent="VBoxContainer 2/Ej_Botones/lista"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 25.0
+margin/right = 998.0
+margin/bottom = 137.0
+alignment = 0
+
+[node name="Botones" type="VBoxContainer" parent="VBoxContainer 2/Ej_Botones/lista/VBoxContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 716.0
+margin/bottom = 112.0
+alignment = 0
+
+[node name="Label" type="Label" parent="VBoxContainer 2/Ej_Botones/lista/VBoxContainer/Botones"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 716.0
+margin/bottom = 14.0
+text = "Buttons"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Button" type="Button" parent="VBoxContainer 2/Ej_Botones/lista/VBoxContainer/Botones"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 18.0
+margin/right = 716.0
+margin/bottom = 38.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Boton"
+flat = false
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="VBoxContainer 2/Ej_Botones/lista/VBoxContainer/Botones"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 42.0
+margin/right = 716.0
+margin/bottom = 62.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Color:"
+flat = false
+color = Color( 1, 1, 1, 1 )
+edit_alpha = true
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer 2/Ej_Botones/lista/VBoxContainer/Botones"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 66.0
+margin/right = 716.0
+margin/bottom = 86.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "OptionButton"
+flat = false
+align = 0
+selected = -1
+items = [  ]
+
+[node name="ToolButton" type="ToolButton" parent="VBoxContainer 2/Ej_Botones/lista/VBoxContainer/Botones"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 90.0
+margin/right = 716.0
+margin/bottom = 112.0
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 6 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Tool"
+flat = true
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer 2/Ej_Botones/lista/VBoxContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 720.0
+margin/top = 0.0
+margin/right = 723.0
+margin/bottom = 112.0
+
+[node name="ChecksBut" type="ButtonGroup" parent="VBoxContainer 2/Ej_Botones/lista/VBoxContainer"]
+
+editor/display_folded = true
+rect/min_size = Vector2( 140, 0 )
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 727.0
+margin/top = 0.0
+margin/right = 867.0
+margin/bottom = 112.0
+alignment = 0
+
+[node name="Titulo" type="Label" parent="VBoxContainer 2/Ej_Botones/lista/VBoxContainer/ChecksBut"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 140.0
+margin/bottom = 14.0
+text = "CheckButtons"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer 2/Ej_Botones/lista/VBoxContainer/ChecksBut"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 14.0
+margin/right = 140.0
+margin/bottom = 17.0
+
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer 2/Ej_Botones/lista/VBoxContainer/ChecksBut"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 17.0
+margin/right = 140.0
+margin/bottom = 39.0
+toggle_mode = true
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Opcion 1"
+flat = false
+align = 0
+
+[node name="CheckButton1" type="CheckButton" parent="VBoxContainer 2/Ej_Botones/lista/VBoxContainer/ChecksBut"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 39.0
+margin/right = 140.0
+margin/bottom = 61.0
+toggle_mode = true
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Opcion 2"
+flat = false
+align = 0
+
+[node name="CheckButton2" type="CheckButton" parent="VBoxContainer 2/Ej_Botones/lista/VBoxContainer/ChecksBut"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 61.0
+margin/right = 140.0
+margin/bottom = 83.0
+toggle_mode = true
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Opcion 3"
+flat = false
+align = 0
+
+[node name="CheckButton3" type="CheckButton" parent="VBoxContainer 2/Ej_Botones/lista/VBoxContainer/ChecksBut"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 83.0
+margin/right = 140.0
+margin/bottom = 105.0
+toggle_mode = true
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Opcion 4"
+flat = false
+align = 0
+
+[node name="VSeparator1" type="VSeparator" parent="VBoxContainer 2/Ej_Botones/lista/VBoxContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 871.0
+margin/top = 0.0
+margin/right = 874.0
+margin/bottom = 112.0
+
+[node name="ChecksBox" type="ButtonGroup" parent="VBoxContainer 2/Ej_Botones/lista/VBoxContainer"]
+
+editor/display_folded = true
+rect/min_size = Vector2( 120, 0 )
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 878.0
+margin/top = 0.0
+margin/right = 998.0
+margin/bottom = 112.0
+alignment = 0
+
+[node name="Titulo" type="Label" parent="VBoxContainer 2/Ej_Botones/lista/VBoxContainer/ChecksBox"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 120.0
+margin/bottom = 14.0
+text = "CheckBoxes"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer 2/Ej_Botones/lista/VBoxContainer/ChecksBox"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 14.0
+margin/right = 120.0
+margin/bottom = 17.0
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer 2/Ej_Botones/lista/VBoxContainer/ChecksBox"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 17.0
+margin/right = 120.0
+margin/bottom = 40.0
+toggle_mode = true
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Opcion 1"
+flat = false
+align = 0
+
+[node name="CheckBox1" type="CheckBox" parent="VBoxContainer 2/Ej_Botones/lista/VBoxContainer/ChecksBox"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 40.0
+margin/right = 120.0
+margin/bottom = 63.0
+toggle_mode = true
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Opcion 2"
+flat = false
+align = 0
+
+[node name="CheckBox2" type="CheckBox" parent="VBoxContainer 2/Ej_Botones/lista/VBoxContainer/ChecksBox"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 63.0
+margin/right = 120.0
+margin/bottom = 86.0
+toggle_mode = true
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Opcion 3"
+flat = false
+align = 0
+
+[node name="CheckBox3" type="CheckBox" parent="VBoxContainer 2/Ej_Botones/lista/VBoxContainer/ChecksBox"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 86.0
+margin/right = 120.0
+margin/bottom = 109.0
+toggle_mode = true
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Opcion 4"
+flat = false
+align = 0
+
+[node name="Ej_Rangos" type="Panel" parent="VBoxContainer 2"]
+
+rect/min_size = Vector2( 0, 100 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 312.0
+margin/right = 1008.0
+margin/bottom = 412.0
+custom_styles/panel = ExtResource( 2 )
+script/script = ExtResource( 7 )
+
+[node name="Info" type="Label" parent="VBoxContainer 2/Ej_Rangos"]
+
+anchor/right = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 5.0
+margin/top = 5.0
+margin/right = 5.0
+margin/bottom = 20.0
+custom_fonts/font = ExtResource( 4 )
+text = "Ejemplo de Rangos"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer 2/Ej_Rangos"]
+
+anchor/right = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 5.0
+margin/top = 20.0
+margin/right = 5.0
+margin/bottom = 20.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer 2/Ej_Rangos"]
+
+anchor/right = 2
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 5.0
+margin/top = 29.0
+margin/right = 0.799603
+margin/bottom = 21.0
+alignment = 0
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer 2/Ej_Rangos/VBoxContainer"]
+
+rect/min_size = Vector2( 0, 20 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 1
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 800.0
+margin/bottom = 20.0
+range/min = 0.0
+range/max = 100.0
+range/step = 1.0
+range/page = 0.0
+range/value = 1.0
+range/exp_edit = false
+range/rounded = false
+tick_count = 5
+ticks_on_borders = false
+focus_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer 2/Ej_Rangos/VBoxContainer"]
+
+rect/min_size = Vector2( 0, 25 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 1
+margin/left = 0.0
+margin/top = 24.0
+margin/right = 800.0
+margin/bottom = 49.0
+range/min = 0.0
+range/max = 100.0
+range/step = 1.0
+range/page = 0.0
+range/value = 1.0
+range/exp_edit = false
+range/rounded = false
+percent/visible = true
+
+[node name="HScrollBar" type="HScrollBar" parent="VBoxContainer 2/Ej_Rangos/VBoxContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 1
+margin/left = 0.0
+margin/top = 53.0
+margin/right = 800.0
+margin/bottom = 65.0
+range/min = 0.0
+range/max = 100.0
+range/step = 1.0
+range/page = 0.0
+range/value = 1.0
+range/exp_edit = false
+range/rounded = false
+custom_step = -1.0
+
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer 2/Ej_Rangos"]
+
+anchor/left = 2
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.809524
+margin/top = 53.0
+margin/right = 6.0
+margin/bottom = 23.0
+range/min = 0.0
+range/max = 100.0
+range/step = 1.0
+range/page = 0.0
+range/value = 1.0
+range/exp_edit = false
+range/rounded = false
+editable = true
+prefix = ""
+suffix = "%"
+
+[connection signal="pressed" from="VBoxContainer 2/Ej_CicloTxt/lista/Button" to="VBoxContainer 2/Ej_CicloTxt" method="_on_Button_pressed"]
+
+[connection signal="value_changed" from="VBoxContainer 2/Ej_Rangos/VBoxContainer/HSlider" to="VBoxContainer 2/Ej_Rangos" method="cambio"]
+
+[connection signal="value_changed" from="VBoxContainer 2/Ej_Rangos/VBoxContainer/ProgressBar" to="VBoxContainer 2/Ej_Rangos" method="cambio"]
+
+[connection signal="value_changed" from="VBoxContainer 2/Ej_Rangos/VBoxContainer/HScrollBar" to="VBoxContainer 2/Ej_Rangos" method="cambio"]
+
+[connection signal="value_changed" from="VBoxContainer 2/Ej_Rangos/SpinBox" to="VBoxContainer 2/Ej_Rangos" method="cambio"]
+
+

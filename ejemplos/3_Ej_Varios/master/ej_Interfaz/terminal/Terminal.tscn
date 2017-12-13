@@ -1,0 +1,83 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://recursos/estilos/verdeConsola.tres" type="StyleBox" id=1]
+[ext_resource path="res://ej_Interfaz/terminal/Terminal.gd" type="Script" id=2]
+[ext_resource path="res://recursos/fuentes/HelveticaNeue-Roman14.fnt" type="BitmapFont" id=3]
+
+[node name="Terminal" type="Panel"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 3.0
+margin/top = 3.0
+margin/right = 3.0
+margin/bottom = 3.0
+custom_styles/panel = ExtResource( 1 )
+script/script = ExtResource( 2 )
+
+[node name="consola" type="RichTextLabel" parent="."]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 2.0
+margin/top = 2.0
+margin/right = 2.0
+margin/bottom = 28.0
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/selection_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_selected = Color( 0, 0.34375, 1, 1 )
+bbcode/enabled = true
+bbcode/bbcode = "Terminal"
+visible_characters = -1
+percent_visible = 1.0
+
+[node name="comandos" type="LineEdit" parent="."]
+
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 3.0
+margin/top = 27.0
+margin/right = 64.0
+margin/bottom = 3.0
+placeholder/text = ">>"
+placeholder/alpha = 0.6
+focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
+
+[node name="botonAyuda" type="Button" parent="."]
+
+anchor/left = 1
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 60.0
+margin/top = 24.0
+margin/right = 4.0
+margin/bottom = 4.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Ayuda"
+flat = false
+
+[connection signal="pressed" from="botonAyuda" to="." method="comAyuda"]
+
+

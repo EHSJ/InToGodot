@@ -1,0 +1,920 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://ej_Interfaz/hojaDePersonaje/ControlStat.tscn" type="PackedScene" id=2]
+
+[node name="HojaPj" type="Control"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+
+[node name="TabContainer" type="TabContainer" parent="."]
+
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 3
+margin/left = 10.0
+margin/top = 10.0
+margin/right = 500.0
+margin/bottom = 10.0
+tab_align = 0
+tabs_visible = true
+
+[node name="Nuevo" type="Panel" parent="TabContainer"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 4.0
+margin/top = 32.0
+margin/right = 4.0
+margin/bottom = 4.0
+
+[node name="Elementos" type="VBoxContainer" parent="TabContainer/Nuevo"]
+
+editor/display_folded = true
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 3
+margin/left = 10.0
+margin/top = 10.0
+margin/right = 10.0
+margin/bottom = 10.0
+alignment = 0
+
+[node name="Credenciales" type="HBoxContainer" parent="TabContainer/Nuevo/Elementos"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 462.0
+margin/bottom = 64.0
+alignment = 0
+
+[node name="TextureFrame" type="TextureButton" parent="TabContainer/Nuevo/Elementos/Credenciales"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 64.0
+margin/bottom = 64.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 1 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="DatosPj" type="VBoxContainer" parent="TabContainer/Nuevo/Elementos/Credenciales"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 68.0
+margin/top = 0.0
+margin/right = 462.0
+margin/bottom = 64.0
+alignment = 0
+
+[node name="Nombre" type="HBoxContainer" parent="TabContainer/Nuevo/Elementos/Credenciales/DatosPj"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 394.0
+margin/bottom = 24.0
+alignment = 0
+
+[node name="Label" type="Label" parent="TabContainer/Nuevo/Elementos/Credenciales/DatosPj/Nombre"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 5.0
+margin/right = 56.0
+margin/bottom = 19.0
+text = "Nombre:"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/Nuevo/Elementos/Credenciales/DatosPj/Nombre"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 0
+margin/left = 60.0
+margin/top = 0.0
+margin/right = 330.0
+margin/bottom = 24.0
+placeholder/text = "Nombre del Personaje.."
+placeholder/alpha = 0.6
+focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
+
+[node name="Button" type="Button" parent="TabContainer/Nuevo/Elementos/Credenciales/DatosPj/Nombre"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 334.0
+margin/top = 2.0
+margin/right = 394.0
+margin/bottom = 22.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "_REGEN"
+flat = false
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Nuevo/Elementos/Credenciales/DatosPj"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 28.0
+margin/right = 394.0
+margin/bottom = 31.0
+
+[node name="Profesion" type="HBoxContainer" parent="TabContainer/Nuevo/Elementos/Credenciales/DatosPj"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 35.0
+margin/right = 394.0
+margin/bottom = 55.0
+alignment = 0
+
+[node name="Label" type="Label" parent="TabContainer/Nuevo/Elementos/Credenciales/DatosPj/Profesion"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 3.0
+margin/right = 44.0
+margin/bottom = 17.0
+text = "_Clase:"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="LineEdit" type="OptionButton" parent="TabContainer/Nuevo/Elementos/Credenciales/DatosPj/Profesion"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 0
+margin/left = 48.0
+margin/top = 0.0
+margin/right = 394.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "_Guerrero"
+flat = false
+align = 0
+selected = 0
+items = [ "_Guerrero", null, false, -1, null, "_Arquero", null, false, -1, null, "_Mago", null, false, -1, null ]
+
+[node name="HSeparator-1" type="HSeparator" parent="TabContainer/Nuevo/Elementos"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 68.0
+margin/right = 462.0
+margin/bottom = 71.0
+
+[node name="Stats" type="HBoxContainer" parent="TabContainer/Nuevo/Elementos"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 75.0
+margin/right = 462.0
+margin/bottom = 119.0
+alignment = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Nuevo/Elementos/Stats"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 146.0
+margin/bottom = 44.0
+alignment = 0
+
+[node name="ControlStat" parent="TabContainer/Nuevo/Elementos/Stats/VBoxContainer" instance=ExtResource( 2 )]
+
+margin/right = 146.0
+
+[node name="ControlStat-1" parent="TabContainer/Nuevo/Elementos/Stats/VBoxContainer" instance=ExtResource( 2 )]
+
+margin/top = 24.0
+margin/right = 146.0
+margin/bottom = 44.0
+
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Nuevo/Elementos/Stats"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 3
+margin/left = 150.0
+margin/top = 0.0
+margin/right = 153.0
+margin/bottom = 44.0
+
+[node name="VBoxContainer-1" type="VBoxContainer" parent="TabContainer/Nuevo/Elementos/Stats"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 157.0
+margin/top = 0.0
+margin/right = 303.0
+margin/bottom = 44.0
+alignment = 0
+
+[node name="ControlStat-2" parent="TabContainer/Nuevo/Elementos/Stats/VBoxContainer-1" instance=ExtResource( 2 )]
+
+margin/right = 146.0
+
+[node name="ControlStat-3" parent="TabContainer/Nuevo/Elementos/Stats/VBoxContainer-1" instance=ExtResource( 2 )]
+
+margin/top = 24.0
+margin/right = 146.0
+margin/bottom = 44.0
+
+[node name="VSeparator-1" type="VSeparator" parent="TabContainer/Nuevo/Elementos/Stats"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 3
+margin/left = 307.0
+margin/top = 0.0
+margin/right = 310.0
+margin/bottom = 44.0
+
+[node name="VBoxContainer 2" type="VBoxContainer" parent="TabContainer/Nuevo/Elementos/Stats"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 314.0
+margin/top = 0.0
+margin/right = 462.0
+margin/bottom = 44.0
+alignment = 0
+
+[node name="ControlStat-4" parent="TabContainer/Nuevo/Elementos/Stats/VBoxContainer 2" instance=ExtResource( 2 )]
+
+margin/right = 148.0
+
+[node name="ControlStat-5" parent="TabContainer/Nuevo/Elementos/Stats/VBoxContainer 2" instance=ExtResource( 2 )]
+
+margin/top = 24.0
+margin/right = 148.0
+margin/bottom = 44.0
+
+[node name="HSeparator-2" type="HSeparator" parent="TabContainer/Nuevo/Elementos"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 123.0
+margin/right = 462.0
+margin/bottom = 126.0
+
+[node name="Habilidades" type="VBoxContainer" parent="TabContainer/Nuevo/Elementos"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 130.0
+margin/right = 462.0
+margin/bottom = 173.0
+alignment = 0
+
+[node name="Label" type="Label" parent="TabContainer/Nuevo/Elementos/Habilidades"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 462.0
+margin/bottom = 14.0
+text = "_Habilidades:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Tree" type="Tree" parent="TabContainer/Nuevo/Elementos/Habilidades"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 18.0
+margin/right = 462.0
+margin/bottom = 19.0
+
+[node name="ButtonGroup" type="HBoxContainer" parent="TabContainer/Nuevo/Elementos/Habilidades"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 23.0
+margin/right = 462.0
+margin/bottom = 43.0
+alignment = 0
+
+[node name="Button" type="Button" parent="TabContainer/Nuevo/Elementos/Habilidades/ButtonGroup"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 17.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "-"
+flat = false
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/Nuevo/Elementos/Habilidades/ButtonGroup"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 21.0
+margin/top = 0.0
+margin/right = 438.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+align = 0
+selected = -1
+items = [  ]
+
+[node name="Button-1" type="Button" parent="TabContainer/Nuevo/Elementos/Habilidades/ButtonGroup"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 442.0
+margin/top = 0.0
+margin/right = 462.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "+"
+flat = false
+
+[node name="HSeparator-3" type="HSeparator" parent="TabContainer/Nuevo/Elementos"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 177.0
+margin/right = 462.0
+margin/bottom = 180.0
+
+[node name="Inventario" type="VBoxContainer" parent="TabContainer/Nuevo/Elementos"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 184.0
+margin/right = 462.0
+margin/bottom = 227.0
+alignment = 0
+
+[node name="Label" type="Label" parent="TabContainer/Nuevo/Elementos/Inventario"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 462.0
+margin/bottom = 14.0
+text = "_Inventario:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Tree" type="Tree" parent="TabContainer/Nuevo/Elementos/Inventario"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 18.0
+margin/right = 462.0
+margin/bottom = 19.0
+
+[node name="ButtonGroup" type="HBoxContainer" parent="TabContainer/Nuevo/Elementos/Inventario"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 23.0
+margin/right = 462.0
+margin/bottom = 43.0
+alignment = 0
+
+[node name="Button" type="Button" parent="TabContainer/Nuevo/Elementos/Inventario/ButtonGroup"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 17.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "-"
+flat = false
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/Nuevo/Elementos/Inventario/ButtonGroup"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 21.0
+margin/top = 0.0
+margin/right = 438.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+align = 0
+selected = -1
+items = [  ]
+
+[node name="Button-1" type="Button" parent="TabContainer/Nuevo/Elementos/Inventario/ButtonGroup"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 442.0
+margin/top = 0.0
+margin/right = 462.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "+"
+flat = false
+
+[node name="HSeparator-4" type="HSeparator" parent="TabContainer/Nuevo/Elementos"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 231.0
+margin/right = 462.0
+margin/bottom = 234.0
+custom_constants/separation = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Nuevo/Elementos"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 238.0
+margin/right = 462.0
+margin/bottom = 473.0
+bbcode/enabled = false
+bbcode/bbcode = ""
+visible_characters = -1
+percent_visible = 1.0
+
+[node name="HSeparator-5" type="HSeparator" parent="TabContainer/Nuevo/Elementos"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 477.0
+margin/right = 462.0
+margin/bottom = 480.0
+custom_constants/separation = 0
+
+[node name="Valor" type="HBoxContainer" parent="TabContainer/Nuevo/Elementos"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 484.0
+margin/right = 462.0
+margin/bottom = 500.0
+alignment = 0
+
+[node name="Label" type="Label" parent="TabContainer/Nuevo/Elementos/Valor"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 1.0
+margin/right = 81.0
+margin/bottom = 15.0
+text = "_Valor del PJ:"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ProgressBar" type="ProgressBar" parent="TabContainer/Nuevo/Elementos/Valor"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 0
+margin/left = 85.0
+margin/top = 0.0
+margin/right = 422.0
+margin/bottom = 16.0
+range/min = 0.0
+range/max = 100.0
+range/step = 1.0
+range/page = 0.0
+range/value = 55.0
+range/exp_edit = false
+range/rounded = false
+percent/visible = false
+
+[node name="Label-1" type="Label" parent="TabContainer/Nuevo/Elementos/Valor"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 426.0
+margin/top = 1.0
+margin/right = 462.0
+margin/bottom = 15.0
+text = "####"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Fichero" type="HBoxContainer" parent="TabContainer/Nuevo/Elementos"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 504.0
+margin/right = 462.0
+margin/bottom = 524.0
+alignment = 0
+
+[node name="Button" type="Button" parent="TabContainer/Nuevo/Elementos/Fichero"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 51.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "_Crear"
+flat = false
+
+[node name="Equipar" type="Panel" parent="TabContainer"]
+
+visibility/visible = false
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 4.0
+margin/top = 32.0
+margin/right = 4.0
+margin/bottom = 4.0
+
+[node name="Elementos" type="VBoxContainer" parent="TabContainer/Equipar"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 3
+margin/left = 10.0
+margin/top = 10.0
+margin/right = 10.0
+margin/bottom = 10.0
+alignment = 0
+
+[node name="ArmaPrincipal" type="HBoxContainer" parent="TabContainer/Equipar/Elementos"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 462.0
+margin/bottom = 20.0
+alignment = 0
+
+[node name="Label" type="Label" parent="TabContainer/Equipar/Elementos/ArmaPrincipal"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 3.0
+margin/right = 103.0
+margin/bottom = 17.0
+text = "_Arma principal:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/Equipar/Elementos/ArmaPrincipal"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 107.0
+margin/top = 0.0
+margin/right = 462.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+align = 0
+selected = -1
+items = [  ]
+
+[node name="ArmaSecundaria" type="HBoxContainer" parent="TabContainer/Equipar/Elementos"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 24.0
+margin/right = 462.0
+margin/bottom = 44.0
+alignment = 0
+
+[node name="Label" type="Label" parent="TabContainer/Equipar/Elementos/ArmaSecundaria"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 3.0
+margin/right = 117.0
+margin/bottom = 17.0
+text = "_Arma secundaria:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/Equipar/Elementos/ArmaSecundaria"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 2
+margin/left = 121.0
+margin/top = 0.0
+margin/right = 462.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+align = 0
+selected = -1
+items = [  ]
+
+[node name="Personajes" type="Panel" parent="TabContainer"]
+
+editor/display_folded = true
+visibility/visible = false
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 4.0
+margin/top = 32.0
+margin/right = 4.0
+margin/bottom = 4.0
+
+[node name="Lista" type="VBoxContainer" parent="TabContainer/Personajes"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 10.0
+margin/top = 10.0
+margin/right = 10.0
+margin/bottom = 10.0
+alignment = 0
+
+[node name="Lista" type="VBoxContainer" parent="TabContainer/Personajes/Lista"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 462.0
+margin/bottom = 524.0
+alignment = 0
+
+[node name="Label" type="Label" parent="TabContainer/Personajes/Lista/Lista"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 462.0
+margin/bottom = 14.0
+text = "_Lista:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Tree" type="Tree" parent="TabContainer/Personajes/Lista/Lista"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 18.0
+margin/right = 462.0
+margin/bottom = 500.0
+
+[node name="ButtonGroup" type="HBoxContainer" parent="TabContainer/Personajes/Lista/Lista"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 504.0
+margin/right = 462.0
+margin/bottom = 524.0
+alignment = 2
+
+[node name="Button-1" type="Button" parent="TabContainer/Personajes/Lista/Lista/ButtonGroup"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 343.0
+margin/top = 0.0
+margin/right = 407.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Exportar"
+flat = false
+
+[node name="Button" type="Button" parent="TabContainer/Personajes/Lista/Lista/ButtonGroup"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 411.0
+margin/top = 0.0
+margin/right = 462.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Borrar"
+flat = false
+
+

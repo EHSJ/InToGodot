@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://auxiliares/capaInterfaz/CapaInterfaz.gd" type="Script" id=1]
+[ext_resource path="res://recursos/fuentes/HelveticaNeue-Roman22.fnt" type="BitmapFont" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+bg_color = Color( 0.202148, 0.269531, 0.203201, 1 )
+light_color = Color( 0.201057, 0.261719, 0.103256, 1 )
+dark_color = Color( 0.8, 0.8, 0.8, 1 )
+border_size = 0
+border_blend = true
+draw_bg = true
+
+[node name="CapaInterfaz" type="CanvasLayer"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+script/script = ExtResource( 1 )
+texto = ""
+
+[node name="Panel" type="Panel" parent="."]
+
+rect/rotation = -29.4836
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 28.0
+margin/top = -55.0
+margin/right = 136.0
+margin/bottom = 193.0
+
+[node name="InfoPosicion" type="Control" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 50.0
+margin/top = 18.0
+margin/right = 90.0
+margin/bottom = 58.0
+
+[node name="Panel" type="Panel" parent="InfoPosicion"]
+
+visibility/light_mask = 0
+rect/rotation = 8.41163
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -31.0
+margin/top = 34.0
+margin/right = 181.0
+margin/bottom = 91.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Label" type="Label" parent="InfoPosicion/Panel"]
+
+visibility/light_mask = 0
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 1
+margin/left = 1.0
+margin/top = 1.0
+margin/right = 1.0
+margin/bottom = 1.0
+custom_fonts/font = ExtResource( 2 )
+text = "XXX"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+

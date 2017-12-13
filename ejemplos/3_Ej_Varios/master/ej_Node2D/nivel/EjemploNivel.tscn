@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://ej_Node2D/tileset/nivelTileset.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ej_Node2D/fondoParallax/fondoParallaxBosques.tscn" type="PackedScene" id=2]
+[ext_resource path="res://auxiliares/scrollCamara2D/scrollCamara2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://auxiliares/creaObjetos/crearObjetos.tscn" type="PackedScene" id=4]
+[ext_resource path="res://auxiliares/capaInterfaz/CapaInterfaz.tscn" type="PackedScene" id=5]
+
+[node name="Partida" type="Node2D"]
+
+transform/pos = Vector2( 638, -318 )
+
+[node name="NivelVerde" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 516, 70 )
+
+[node name="FondoBosques" parent="." instance=ExtResource( 2 )]
+
+[node name="Camera2D" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 340, -104 )
+limit/left = 0
+limit/top = -3000
+limit/right = 4000
+limit/bottom = 20
+smoothing/enable = true
+zoomPaso = 0.1
+
+[node name="crearObjetos" parent="Camera2D" instance=ExtResource( 4 )]
+
+[node name="CapaInterfaz" parent="." instance=ExtResource( 5 )]
+
+texto = "Ejemplo Nivel Plataformas"
+
+

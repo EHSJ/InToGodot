@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://auxiliares/scrollCamara2D/ScrollCamara2D.gd" type="Script" id=1]
+[ext_resource path="res://auxiliares/infoPosicion/controlInfoPosicion.tscn" type="PackedScene" id=2]
+
+[node name="Camera2D" type="Camera2D"]
+
+transform/pos = Vector2( 926, -482 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit/left = -1000
+limit/top = -6489
+limit/right = 10000
+limit/bottom = 128
+drag_margin/h_enabled = false
+drag_margin/v_enabled = false
+smoothing/enable = false
+smoothing/speed = 2.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+script/script = ExtResource( 1 )
+zoomMin = 0.5
+zoomMax = 3.0
+zoomPaso = 0.25
+
+[node name="InfoPosicion" parent="." instance=ExtResource( 2 )]
+
+anchor/right = 1
+anchor/bottom = 1
+margin/left = -16.0
+margin/top = 0.0
+margin/right = 80.0
+margin/bottom = 64.0
+
+[node name="Label" type="Label" parent="."]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 32.0
+margin/top = 32.0
+margin/right = 24.0
+margin/bottom = 18.0
+text = "X"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+

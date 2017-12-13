@@ -1,0 +1,98 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://ej_Node2D/iluminacion2D/EjemploIluminación2D.gd" type="Script" id=1]
+[ext_resource path="res://recursos/gfx/clips/bg.png" type="Texture" id=2]
+[ext_resource path="res://recursos/gfx/clips/light.png" type="Texture" id=3]
+[ext_resource path="res://recursos/gfx/clips/voluta.png" type="Texture" id=4]
+[ext_resource path="res://recursos/fuentes/HelveticaNeue-Roman22.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://auxiliares/capaInterfaz/CapaInterfaz.tscn" type="PackedScene" id=6]
+
+[node name="EjemploIluminación2D" type="Control"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+script/script = ExtResource( 1 )
+
+[node name="TextureFrame" type="TextureFrame" parent="."]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 15.0
+margin/top = 15.0
+margin/right = 15.0
+margin/bottom = 15.0
+texture = ExtResource( 2 )
+modulate = Color( 0.582031, 0.582031, 0.582031, 1 )
+expand = true
+stretch_mode = 0
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+color = Color( 0.601013, 0.630354, 0.671875, 1 )
+
+[node name="Luz" type="Node2D" parent="."]
+
+transform/pos = Vector2( -417.873, -329.911 )
+
+[node name="Light2D" type="Light2D" parent="Luz"]
+
+transform/pos = Vector2( -1, 0 )
+enabled = true
+editor_only = false
+texture = ExtResource( 3 )
+offset = Vector2( 22, 9 )
+scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 2
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = true
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+[node name="Sprite" type="Sprite" parent="Luz"]
+
+texture = ExtResource( 4 )
+
+[node name="Oclusores" type="Node" parent="."]
+
+[node name="efecto" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 85.0
+margin/top = 120.0
+margin/right = 143.0
+margin/bottom = 143.0
+custom_fonts/font = ExtResource( 5 )
+text = "Modo"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="CapaInterfaz" parent="." instance=ExtResource( 6 )]
+
+texto = "Ejemplo Iluminación"
+
+
