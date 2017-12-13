@@ -1,0 +1,23 @@
+Esta carpeta contiene los ejemplos utilizados en la obra.
+
+Desarrollo de Juegos Multiplataforma Utilizando Godot Engine.
+
+Proyecto final del ciclo formativo de grado superior en Desarrollo de Aplicaciones Multiplataforma.
+Cursado en el I.E.S. Augustóbriga de Navalmoral de la Mata, Cáceres.
+
+Por Eugenio Hugo Salgüero Jáñez.
+Diciembre 2017
+
+Esta obra está acogida bajo una licencia Reconocimiento-No Comercial-CompartirIgual. 
+Esta licencia permite a otros entremezclar, ajustar y construir a partir de esta obra con fines no comerciales, siempre y cuando le reconozcan la autoría y sus nuevas creaciones estén bajo una licencia con los mismos términos. 
+
+Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional
+http://creativecommons.org/licenses/by-nc-sa/4.0/
+https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+
+Ejemplos:
+    1_Ej_Hola Mundo
+    2_Ej_PruebaResoluciones
+    3_Ej_Varios
+    4_Proyecto Naves
+    5_Proyecto Matamarcianos DAM
