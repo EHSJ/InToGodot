@@ -1,0 +1,75 @@
+[gd_scene load_steps=2 format=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "
+extends Control
+const ULTIMO=6
+var contador=0
+var laEtiqueta
+var textoInicio=\"Hola Mundo, vamos a contar..\"
+var unidad=\"elefante\"
+var textoFin=\"Final de la Cuenta atrás\"
+
+
+func _ready():
+	#Guardamos la referencia a nuestra etiqueta
+	# para no utilizar constantemente get_node
+	laEtiqueta=get_node(\"Etiqueta\")
+	#Configurar el cronometro a segundo y medio
+	get_node(\"Crono\").set_wait_time(1.5)
+	#Iniciamos el Cronometro de forma manual
+	get_node(\"Crono\").start()
+	#Texto de inicio de la etiqueta
+	laEtiqueta.set_text(textoInicio)
+	get_node(\"Crono\").connect(\"timeout\",self,\"_on_Crono_timeout\")
+
+
+func _on_Crono_timeout():
+	contador+=1 #Incrementamos el contador.
+	if(contador==1): #Si es el primero..
+		laEtiqueta.set_text(\"Un \"+unidad)
+	elif(contador==ULTIMO): #Si es el último
+		laEtiqueta.set_text(textoFin)
+	elif(contador==ULTIMO+1): #En este punto salimos
+		get_tree().quit()
+	else: #Numero intermedios
+		laEtiqueta.set_pos(Vector2(contador*5,contador*5))
+		laEtiqueta.set_text(str(contador)+\" \"+unidad+\"s\")
+
+"
+
+[node name="Gui" type="Control"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 14.0
+script/script = SubResource( 1 )
+
+[node name="Etiqueta" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 14.0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Crono" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+
