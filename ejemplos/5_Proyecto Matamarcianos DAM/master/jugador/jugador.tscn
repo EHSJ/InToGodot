@@ -1,0 +1,173 @@
+[gd_scene load_steps=11 format=1]
+
+[ext_resource path="res://jugador/jugador.gd" type="Script" id=1]
+[ext_resource path="res://gui/estilo_vidabarra.tres" type="StyleBox" id=2]
+[ext_resource path="res://gui/estilo_fondobarra.tres" type="StyleBox" id=3]
+[ext_resource path="res://gui/estilo_energiabarra.tres" type="StyleBox" id=4]
+[ext_resource path="res://gui/estilo_cargabarra.tres" type="StyleBox" id=5]
+[ext_resource path="res://jugador/naves/azul.png" type="Texture" id=6]
+[ext_resource path="res://jugador/estela.gd" type="Script" id=7]
+[ext_resource path="res://jugador/naves/dam3.png" type="Texture" id=8]
+[ext_resource path="res://jugador/damage.gd" type="Script" id=9]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 27.8397
+
+[node name="jugador" type="Area2D" groups=[
+"nave",
+]]
+
+z/z = 10
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 1 )
+color = 0
+
+[node name="partCarga" type="Particles2D" parent="."]
+
+transform/pos = Vector2( 0, -15 )
+config/amount = 100
+config/lifetime = 3.0
+config/emitting = false
+config/process_mode = 1
+params/direction = 180.0
+params/spread = 120.0
+params/linear_velocity = 30.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 32.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 2.0
+params/final_size = 0.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 0.0
+params/anim_initial_pos = -1.0
+randomness/tangential_accel = -1.0
+
+[node name="barVida" type="ProgressBar" parent="."]
+
+visibility/opacity = 0.5
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -25.0
+margin/top = 30.0
+margin/right = 25.0
+margin/bottom = 35.0
+custom_styles/fg = ExtResource( 2 )
+custom_styles/bg = ExtResource( 3 )
+range/min = 0.0
+range/max = 100.0
+range/step = 1.0
+range/page = 0.0
+range/value = 75.0
+range/exp_edit = false
+range/rounded = false
+percent/visible = false
+
+[node name="barEnerg" type="ProgressBar" parent="."]
+
+visibility/opacity = 0.5
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -25.0
+margin/top = 37.0
+margin/right = 25.0
+margin/bottom = 42.0
+custom_styles/fg = ExtResource( 4 )
+custom_styles/bg = ExtResource( 3 )
+range/min = 0.0
+range/max = 100.0
+range/step = 1.0
+range/page = 0.0
+range/value = 75.0
+range/exp_edit = false
+range/rounded = false
+percent/visible = false
+
+[node name="barCarga" type="ProgressBar" parent="."]
+
+visibility/opacity = 0.5
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -25.0
+margin/top = 44.0
+margin/right = 25.0
+margin/bottom = 49.0
+custom_styles/fg = ExtResource( 5 )
+custom_styles/bg = ExtResource( 3 )
+range/min = 0.0
+range/max = 100.0
+range/step = 1.0
+range/page = 0.0
+range/value = 75.0
+range/exp_edit = false
+range/rounded = false
+percent/visible = false
+
+[node name="img" type="Sprite" parent="."]
+
+transform/scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 6 )
+
+[node name="estela" type="Particles2D" parent="img"]
+
+visibility/opacity = 0.1
+visibility/behind_parent = true
+z/z = -1
+config/amount = 5
+config/lifetime = 0.3
+config/emitting = false
+config/process_mode = 1
+config/local_space = false
+config/texture = ExtResource( 6 )
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 0.6
+params/final_size = 0.6
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+script/script = ExtResource( 7 )
+
+[node name="damage" type="Sprite" parent="."]
+
+visibility/opacity = 0.5
+transform/scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 8 )
+modulate = Color( 0, 0, 0, 1 )
+script/script = ExtResource( 9 )
+
+[node name="col" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = true
+_update_shape_index = 0
+
+

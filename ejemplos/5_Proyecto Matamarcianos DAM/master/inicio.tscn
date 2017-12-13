@@ -1,0 +1,245 @@
+[gd_scene load_steps=9 format=1]
+
+[ext_resource path="res://fondos/scroll_fondo_infinito.gd" type="Script" id=1]
+[ext_resource path="res://fondos/purple.png" type="Texture" id=2]
+[ext_resource path="res://fondos/darkPurple.png" type="Texture" id=3]
+[ext_resource path="res://fondos/blue.png" type="Texture" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
+[ext_resource path="res://menus/fnt_8b22.tres" type="DynamicFont" id=6]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Control
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+	set_process(true)
+
+func _process(delta):
+	if(Input.is_action_pressed(\"ui_select\")):
+		_on_animador_finished()
+
+func _on_animador_finished():
+#	get_tree().change_scene(\"res://menus/menuPrincipal.tscn\")
+	var escenaActual = get_tree().get_root().get_child(get_tree().get_root().get_child_count() -1)
+	var menu = preload (\"res://menus/menuPrincipal.tscn\").instance()
+	get_tree().get_root().call_deferred(\"add_child\",menu)
+	escenaActual.queue_free()"
+
+[sub_resource type="Animation" id=2]
+
+length = 5.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:transform/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 1.5, 4.5 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 960, 540 ), Vector2( 960, 540 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:transform/rot")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 1.5, 4.5 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 180.0, 0.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:transform/scale")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0, 1.5, 4.5 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.1, 0.1 ), Vector2( 3, 3 ), Vector2( 3, 3 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Label:custom_constants/shadow_offset_x")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0, 1.5, 3 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -6, -20, 2 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Label:custom_colors/font_color_shadow")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 1.5, 3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.0666771, 0.171875, 0.0483398, 1 ), Color( 0.129375, 0.699219, 0.0300446, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Label:custom_colors/font_color")
+tracks/5/interp = 1
+tracks/5/imported = false
+tracks/5/keys = {
+"times": FloatArray( 3, 3.1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.15419, 0.917969, 0.201926, 1 ), Color( 0.732991, 0.917969, 0.15419, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:visibility/opacity")
+tracks/6/interp = 1
+tracks/6/imported = false
+tracks/6/keys = {
+"times": FloatArray( 3.5, 5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[node name="inicio" type="Control"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+script/script = SubResource( 1 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+scroll/offset = Vector2( 0, 0 )
+scroll/base_offset = Vector2( 0, 0 )
+scroll/base_scale = Vector2( 1, 1 )
+scroll/limit_begin = Vector2( 0, 0 )
+scroll/limit_end = Vector2( 0, 0 )
+scroll/ignore_camera_zoom = true
+
+[node name="ParallaxSup" type="ParallaxLayer" parent="ParallaxBackground"]
+
+motion/scale = Vector2( 1, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 256, 0 )
+script/script = ExtResource( 1 )
+velocidad = 120
+direccion = 1
+mirroring = 256
+
+[node name="fondoClaro" type="TextureFrame" parent="ParallaxBackground/ParallaxSup"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1920.0
+margin/bottom = 260.0
+texture = ExtResource( 2 )
+stretch_mode = 2
+
+[node name="ParallaxMed" type="ParallaxLayer" parent="ParallaxBackground"]
+
+motion/scale = Vector2( 1, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 256, 0 )
+script/script = ExtResource( 1 )
+velocidad = 100
+direccion = 1
+mirroring = 256
+
+[node name="fondoMedio" type="TextureFrame" parent="ParallaxBackground/ParallaxMed"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 260.0
+margin/right = 1920.0
+margin/bottom = 810.0
+texture = ExtResource( 3 )
+stretch_mode = 2
+
+[node name="ParallaxInf" type="ParallaxLayer" parent="ParallaxBackground"]
+
+motion/scale = Vector2( 1, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 256, 0 )
+script/script = ExtResource( 1 )
+velocidad = 80
+direccion = 1
+mirroring = 256
+
+[node name="fondoAzul" type="TextureFrame" parent="ParallaxBackground/ParallaxInf"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 805.0
+margin/right = 1920.0
+margin/bottom = 1075.0
+texture = ExtResource( 4 )
+stretch_mode = 2
+
+[node name="Sprite" type="Sprite" parent="."]
+
+visibility/opacity = 0.0
+transform/pos = Vector2( 960, 540 )
+transform/scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="Sprite"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -140.0
+margin/top = -14.0
+margin/right = 146.0
+margin/bottom = 14.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.732991, 0.917969, 0.15419, 1 )
+custom_colors/font_color_shadow = Color( 0.129375, 0.699219, 0.0300446, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 0
+text = "Matamarcianos"
+align = 1
+valign = 1
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="animador" type="AnimationPlayer" parent="Sprite"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/inicio = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "inicio"
+
+[connection signal="finished" from="Sprite/animador" to="." method="_on_animador_finished"]
+
+

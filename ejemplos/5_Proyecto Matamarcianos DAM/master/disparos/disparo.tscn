@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://disparos/disparo.gd" type="Script" id=1]
+[ext_resource path="res://disparos/azul05.png" type="Texture" id=2]
+[ext_resource path="res://jugador/estela.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 6.4995
+height = 49.3489
+
+[node name="disparo" type="Area2D" groups=[
+"disparo",
+]]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 1 )
+
+[node name="col" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = true
+_update_shape_index = 0
+
+[node name="img" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, -1 )
+texture = ExtResource( 2 )
+
+[node name="Particles2D" type="Particles2D" parent="img"]
+
+visibility/opacity = 0.1
+visibility/behind_parent = true
+transform/pos = Vector2( 0, 1 )
+config/amount = 3
+config/lifetime = 0.1
+config/emitting = false
+config/process_mode = 1
+config/local_space = false
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+script/script = ExtResource( 3 )
+
+[node name="labelEnergia" type="Label" parent="."]
+
+visibility/visible = false
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 10.0
+margin/top = -30.0
+margin/right = 50.0
+margin/bottom = -16.0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[connection signal="area_enter" from="." to="." method="_on_disparo_area_enter"]
+
+
