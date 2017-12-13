@@ -1,0 +1,25 @@
+Puntos:
+    - Suicidio -1
+    - Frag +1
+
+
+
+
+modos de juego:
+    - 1 muerte
+    - Muertes en tiempo
+    - Astoroides en un tiempo
+
+flags
+    - daño nave vs nave on/off
+
+bordes jugador:
+    - muerte
+    - warp
+    - rebote
+
+bordes objetos:
+    - muerte
+    - warp
+    - rebote
+

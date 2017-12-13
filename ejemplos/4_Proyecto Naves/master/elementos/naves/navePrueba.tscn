@@ -1,0 +1,237 @@
+[gd_scene load_steps=9 format=1]
+
+[ext_resource path="res://elementos/naves/Nave.gd" type="Script" id=1]
+[ext_resource path="res://elementos/infoDinamica/infoDinamica.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gfx/naves.png" type="Texture" id=3]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 10.0026, -24.999, 8.00336, -31.9992, 13.0034, -31.9986, 37.0009, -8.99612, 32.9999, 1.00346 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -36.9991, -9.00388, -12.9966, -32.0014, -7.99664, -32.0008, -9.99738, -25.001, -33.0001, 0.996538 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -26.002, 18.9973, -32.0021, 19.9966, -38.0005, 4.99601, -33.0001, 0.996538 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 32.9999, 1.00346, 37.9995, 5.00399, 30.9979, 20.0033, 25.998, 19.0027 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -9.99738, -25.001, 10.0026, -24.999, 32.9999, 1.00346, 25.998, 19.0027, 21.9974, 25.0023, -23.0026, 24.9976, -26.002, 18.9973, -33.0001, 0.996538 )
+
+[node name="NavePrueba" type="RigidBody2D" groups=[
+"esBlancoMisil",
+"vulnerable",
+"mostrarPropulsado",
+]]
+
+transform/rot = 0.0060113
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 2 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
+shapes/2/shape = SubResource( 3 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/2/trigger = false
+shapes/3/shape = SubResource( 4 )
+shapes/3/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/3/trigger = false
+shapes/4/shape = SubResource( 5 )
+shapes/4/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/4/trigger = false
+collision/layers = 1
+collision/mask = 1
+mode = 0
+mass = 5.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+velocity/linear = Vector2( 0, 0 )
+velocity/angular = 0.0
+damp_override/linear = -1.0
+damp_override/angular = 1.0
+script/script = ExtResource( 1 )
+nombre = "Sin Nombre"
+estado = 0
+equipo = 0
+stats = {
+"bateria": {
+"actual": null,
+"maximo": 300
+},
+"disparoA": {
+"enfriamiento": 0,
+"enfriamientoMax": 0.2,
+"tipo": 0
+},
+"disparoB": {
+"enfriamiento": 0,
+"enfriamientoMax": 3.0,
+"municion": 2,
+"tipo": 0
+},
+"escudo": {
+"actual": null,
+"maximo": 100
+},
+"motorAvance": {
+"actual": null,
+"maximo": 500
+},
+"motorGiro": {
+"actual": null,
+"maximo": 15000
+},
+"motorStrafe": {
+"actual": null,
+"maximo": 300
+},
+"turbo": {
+"actual": null,
+"enfriamiento": 0.0,
+"enfriamientoMax": 2,
+"maximo": 700
+}
+}
+
+[node name="infoDinamica" parent="." instance=ExtResource( 2 )]
+
+colCentro = Color( 0, 0.71875, 1, 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+build_mode = 0
+polygon = Vector2Array( -12.9966, -32.0014, -7.99664, -32.0008, -9.99738, -25.001, 10.0026, -24.999, 8.00336, -31.9992, 13.0034, -31.9986, 37.0009, -8.99612, 32.9999, 1.00346, 37.9995, 5.00399, 30.9979, 20.0033, 25.998, 19.0027, 21.9974, 25.0023, -23.0026, 24.9976, -26.002, 18.9973, -32.0021, 19.9966, -38.0005, 4.99601, -33.0001, 0.996538, -36.9991, -9.00388 )
+shape_range = Vector2( 0, 4 )
+trigger = false
+
+[node name="Fuselaje" type="Sprite" parent="."]
+
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 1, 137, 62, 62 )
+
+[node name="ArmaD" type="Sprite" parent="Fuselaje"]
+
+visibility/behind_parent = true
+transform/pos = Vector2( 8, -18 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, -10 )
+flip_h = true
+region = true
+region_rect = Rect2( 934, 194, 16, 42 )
+
+[node name="ArmaI" type="Sprite" parent="Fuselaje"]
+
+visibility/behind_parent = true
+transform/pos = Vector2( -8, -18 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, -10 )
+region = true
+region_rect = Rect2( 934, 194, 16, 42 )
+
+[node name="Tobera" type="Sprite" parent="Fuselaje"]
+
+editor/display_folded = true
+visibility/behind_parent = true
+transform/pos = Vector2( 0, 35 )
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 969, 224, 40, 27 )
+
+[node name="Fuego" type="Sprite" parent="Fuselaje/Tobera"]
+
+visibility/behind_parent = true
+transform/pos = Vector2( -5.96046e-07, 6 )
+transform/scale = Vector2( 2.5, 1 )
+texture = ExtResource( 3 )
+offset = Vector2( 0.000524585, 28 )
+region = true
+region_rect = Rect2( 953, 191, 12, 77 )
+
+[node name="BahiaD" type="Sprite" parent="Fuselaje"]
+
+visibility/behind_parent = true
+transform/pos = Vector2( 55, 18 )
+transform/rot = 65.0
+texture = ExtResource( 3 )
+offset = Vector2( 0, 5 )
+region = true
+region_rect = Rect2( 971, 193, 37, 23 )
+
+[node name="BahiaI" type="Sprite" parent="Fuselaje"]
+
+visibility/behind_parent = true
+transform/pos = Vector2( -55, 18 )
+transform/rot = -65.0
+texture = ExtResource( 3 )
+offset = Vector2( 0, 5 )
+region = true
+region_rect = Rect2( 971, 193, 37, 23 )
+
+[node name="AlaD" type="Sprite" parent="Fuselaje"]
+
+visibility/behind_parent = true
+transform/pos = Vector2( 45, -8 )
+texture = ExtResource( 3 )
+flip_v = true
+region = true
+region_rect = Rect2( 1, 2, 59, 115 )
+
+[node name="AlaI" type="Sprite" parent="Fuselaje"]
+
+visibility/behind_parent = true
+transform/pos = Vector2( -45, -8 )
+texture = ExtResource( 3 )
+flip_h = true
+flip_v = true
+region = true
+region_rect = Rect2( 1, 2, 59, 115 )
+
+[node name="Armas" type="Node2D" parent="."]
+
+[node name="PdLaserI" type="Position2D" parent="Armas"]
+
+transform/pos = Vector2( -2.49927, -21 )
+
+[node name="PdLaserD" type="Position2D" parent="Armas"]
+
+transform/pos = Vector2( 2.50073, -21 )
+
+[node name="PdDronI" type="Position2D" parent="Armas"]
+
+transform/pos = Vector2( -24, 6 )
+
+[node name="PdDronD" type="Position2D" parent="Armas"]
+
+transform/pos = Vector2( 24, 6 )
+
+[node name="PdMisilI" type="Position2D" parent="Armas"]
+
+transform/pos = Vector2( -15, -10 )
+
+[node name="PdMisilD" type="Position2D" parent="Armas"]
+
+transform/pos = Vector2( 15, -10 )
+
+

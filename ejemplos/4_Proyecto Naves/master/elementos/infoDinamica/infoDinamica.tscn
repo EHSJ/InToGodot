@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://elementos/infoDinamica/infoDinamica.gd" type="Script" id=1]
+
+[node name="infoDinamica" type="Sprite"]
+
+z/z = 100
+script/script = ExtResource( 1 )
+activo = true
+colCentro = Color( 1, 1, 0, 0.3 )
+colVelocidad = Color( 1, 1, 0, 0.3 )
+colControlAvance = Color( 0.2, 0.5, 0.9, 0.3 )
+colControlStrafe = Color( 0.2, 0.5, 0.9, 0.3 )
+colFuerzaAplicada = Color( 1, 0.2, 0.2, 0.3 )
+anchoLinea = 3.0
+escala = 1.0
+
+

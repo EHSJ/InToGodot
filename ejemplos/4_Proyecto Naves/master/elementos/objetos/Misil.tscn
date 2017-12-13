@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://elementos/objetos/Misil.gd" type="Script" id=1]
+[ext_resource path="res://gfx/naves.png" type="Texture" id=2]
+[ext_resource path="res://elementos/infoDinamica/infoDinamica.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 3.0
+height = 30.0
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -200, -500, -100, -535, 0, -550, 100, -535, 200, -500, 0, 0 )
+
+[node name="Misil" type="RigidBody2D" groups=[
+"mostrarPropulsado",
+]]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -1 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+velocity/linear = Vector2( 0, 0 )
+velocity/angular = 0.0
+damp_override/linear = 0.3
+damp_override/angular = 1.0
+script/script = ExtResource( 1 )
+estado = 0
+equipo = 0
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( 0, -1 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Sensor" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="Collision" type="CollisionPolygon2D" parent="Sensor"]
+
+build_mode = 0
+polygon = Vector2Array( 0, 0, 200, -500, 100, -535, 0, -550, -100, -535, -200, -500 )
+shape_range = Vector2( 0, 0 )
+trigger = true
+
+[node name="Fuego" type="Sprite" parent="."]
+
+visibility/opacity = 0.7
+transform/pos = Vector2( 0, 14 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+offset = Vector2( 0, 28 )
+region = true
+region_rect = Rect2( 953, 191, 12, 77 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 883, 12, 28, 78 )
+
+[node name="infoDinamica" parent="." instance=ExtResource( 3 )]
+
+colCentro = Color( 1, 0, 0, 1 )
+anchoLinea = 2.0
+
+[connection signal="body_enter" from="." to="." method="_on_Misil_body_enter"]
+
+[connection signal="body_enter" from="Sensor" to="." method="_on_Area2D_body_enter"]
+
+[connection signal="body_exit" from="Sensor" to="." method="_on_Area2D_body_exit"]
+
+

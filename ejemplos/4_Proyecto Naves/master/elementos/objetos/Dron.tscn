@@ -1,0 +1,89 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://elementos/infoDinamica/infoDinamica.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gfx/naves.png" type="Texture" id=2]
+[ext_resource path="res://gfx/aura.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 250.0
+
+[node name="Dron" type="RigidBody2D" groups=[
+"vulnerable",
+"mostrarPropulsado",
+]]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 0.707107, -0.707107, 0.707107, 0.707107, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+velocity/linear = Vector2( 0, 0 )
+velocity/angular = 0.0
+damp_override/linear = -1.0
+damp_override/angular = -1.0
+
+[node name="infoDinamica" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 0, -1 )
+activo = false
+anchoLinea = 2.0
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 819, 74, 17, 21 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+
+transform/rot = 45.0
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Sensor" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+monitoring = false
+monitorable = false
+
+[node name="Sensor" type="CollisionShape2D" parent="Sensor"]
+
+shape = SubResource( 2 )
+trigger = true
+_update_shape_index = 0
+
+[node name="Sprite 2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, -5 )
+transform/scale = Vector2( 0.07, 0.07 )
+texture = ExtResource( 3 )
+modulate = Color( 1, 0, 0, 0.501961 )
+
+
