@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://recursos/fuentes/HelveticaNeue-Roman14.fnt" type="BitmapFont" id=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "# Introducción a Godot.
+# ProbarClases
+# Prueba la carga y operación con clases.
+extends Node
+
+export (String, FILE, \"*.gd\") var medida = null
+
+onready var salida = get_node( \"Salida\" )
+var textoTotal = \"\"
+
+func _ready():
+	# Cargamos la Clase medidaEspacio.gd
+	var ME = load(medida)
+	# Creamos varias medidas de prueba.
+	var medida1 = ME.new(1,\"m\",\"Medida 1\")
+	var medida2 = ME.new(1,\"ft\",\"Medida 2\")
+	var medida3 = ME.new(1,\"yd\",\"Medida 3\")
+	# Mostramos por consola.
+	consola( medida1.mostrar(ME.ME_DEBUG) )
+	consola( medida2.mostrar(ME.ME_DEBUG) )
+	consola( medida3.mostrar(ME.ME_DEBUG) )
+	# Probamos la suma.
+	medida1.sum(medida2)
+	medida1.sum(medida3)
+	medida1.nombre=\"Suma\"
+	# Mostrar resultado.
+	consola( medida1.mostrar(ME.ME_DEBUG) )
+
+	salida.set_text( textoTotal )
+	# get_tree().quit()
+
+func consola( linea ):
+	textoTotal += linea + \"\\n\"
+	print(linea)"
+
+[node name="PruebasMedida" type="Control"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 10.0
+margin/top = 200.0
+margin/right = 10.0
+margin/bottom = 40.0
+script/script = SubResource( 1 )
+medida = "res://ej_scripting/clasesMedida/MedidaEspacio.gd"
+
+[node name="Salida" type="RichTextLabel" parent="."]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode/enabled = false
+bbcode/bbcode = ""
+visible_characters = -1
+percent_visible = 1.0
+
+

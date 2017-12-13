@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://ej_scripting/cicloVida/CicloDeVida.gd" type="Script" id=1]
+
+[node name="Padre" type="Node"]
+
+script/script = ExtResource( 1 )
+terminador = true
+
+[node name="Hijo1" type="Node" parent="."]
+
+script/script = ExtResource( 1 )
+terminador = false
+
+[node name="Hijo2" type="Node" parent="."]
+
+script/script = ExtResource( 1 )
+terminador = false
+
+[node name="Hijo21" type="Node" parent="Hijo2"]
+
+script/script = ExtResource( 1 )
+terminador = false
+
+[node name="Hijo22" type="Node" parent="Hijo2"]
+
+script/script = ExtResource( 1 )
+terminador = false
+
+[node name="Hijo221" type="Node" parent="Hijo2/Hijo22"]
+
+script/script = ExtResource( 1 )
+terminador = false
+
+

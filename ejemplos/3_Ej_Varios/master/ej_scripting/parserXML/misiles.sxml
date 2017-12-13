@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<misiles>
+	<misilAA>
+		<identificador>AIM-9</identificador>
+		<nombre>Sidewinder</nombre>
+		<disenador>Raytheon</disenador>
+		<dimensiones unidad="m">
+			<largo>3</largo>
+			<ancho>0.2</ancho>
+			<alto>0.2</alto>
+		</dimensiones>
+		<peso unidad="kg">65</peso>
+		<prestaciones>
+			<cotaMaxima unidad="m">5000</cotaMaxima>
+			<alcance unidad="km">12</alcance>
+			<velocidadMaxima unidad="mach">2.3</velocidadMaxima>
+		</prestaciones>
+		<guia>IR</guia>
+	</misilAA>
+	<misilAA>
+		<identificador>AIM-120</identificador>
+		<nombre>AMRAMM</nombre>
+		<disenador>Raytheon</disenador>
+		<dimensiones unidad="m">
+			<largo>4</largo>
+			<ancho>0.5</ancho>
+			<alto>0.5</alto>
+		</dimensiones>
+		<peso unidad="kg">159</peso>
+		<prestaciones>
+			<cotaMaxima unidad="m">15000</cotaMaxima>
+			<alcance unidad="km">65</alcance>
+			<velocidadMaxima unidad="mach">4.3</velocidadMaxima>
+		</prestaciones>
+		<guia>RA</guia>
+	</misilAA>
+</misiles>

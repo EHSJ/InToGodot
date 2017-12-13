@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<misiles>
+	<misilAA>
+		<identificador> </identificador>
+		<nombre> </nombre>
+		<disenador> </disenador>
+		<dimensiones unidad="m">
+			<largo> </largo>
+			<ancho> </ancho>
+			<alto> </alto>
+		</dimensiones>
+		<peso unidad="kg"> </peso>
+		<prestaciones>
+			<cotaMaxima unidad="m"> </cotaMaxima>
+			<alcance unidad="m"> </alcance>
+			<velocidadMaxima unidad="mach"> </velocidad>
+		</prestaciones>
+		<guia> </guia>
+	</misilAA>
+</misiles>
