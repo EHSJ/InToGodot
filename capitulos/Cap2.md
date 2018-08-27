@@ -2,9 +2,9 @@
 
 Desarrollo de Juegos Multiplataforma Utilizando Godot Engine.
 
-Proyecto final del ciclo formativo de grado superior en Desarrollo de Aplicaciones Multiplataforma. Cursado en el ***I.E.S. Augustóbriga*** de Navalmoral de la Mata.
+Proyecto final del ciclo formativo de grado superior en Desarrollo de Aplicaciones Multiplataforma. Cursado en el ***I.E.S. Augustóbriga*** de Navalmoral de la Mata,
 
-Eugenio Hugo Salgüero Jáñez.
+Por Eugenio Hugo Salgüero Jáñez.
 
 ## ¿Qué es un Motor de juegos?
 
@@ -19,9 +19,6 @@ Godot es un motor de juegos **libre**, de **alto nivel de abstracción** y **mul
 Originariamente creado por [Juan Linietsky] y Ariel Manzur a principios de 2008, ha sido usado para desarrollar multitud de juegos. En febrero de 2014 cambió a licencia **MIT** y alcanzó la versión 1.0 estable en diciembre del mismo año.
 
 El desarrollo sigue liderado por los creadores originales, pero se está creando una fuerte comunidad alrededor del proyecto, que está trabajando en mejorar el motor. Desde Noviembre del 2015, Godot es un proyecto desarrollado por completo por la comunidad, financiado por la organización sin ánimo de lucro [Software Freedom Conservacy].
-
-[Juan Linietsky]: https://twitter.com/reduzio
-[Software Freedom Conservacy]: https://sfconservancy.org/
 
 ### Ventajas
 
@@ -137,22 +134,13 @@ Lo primero que se muestra cuando lanzamos Godot es el “**Project Manager**”,
 Desde el explorador dentro de Godot o desde el sistema, vamos a crear la carpeta del proyecto donde vamos a trabajar.
 
 La configuración que me ha resultado más eficiente, clara y cómoda quedaría así para el proyecto de ejemplo “Hola Mundo”. Crearemos esta estructura:
-
-```bash
-/Home/Proyecto HolaMundo/master
-```
+`/Home/Proyecto HolaMundo/master`
 
 Esta es la carpeta que seleccionaremos como destino a la hora de crear nuestro proyecto. Aquí se creará el fichero `engine.cfg`, que es el que reconoce Godot para saber donde se encuentra el directorio raíz de nuestro juego. Todo el contenido de esta carpeta se considerará contenido del juego y se empaquetará a la hora de hacer las releases, no es buena ideal guardar en este sitio las fuentes de recursos del juego, como los .psd o los .blend.
-
-```bash
-/Home/Proyecto HolaMundo/base
-```
+`/Home/Proyecto HolaMundo/base`
 
 En esta carpeta guardaremos el contenido fuente del juego, como por ejemplo los archivos de imágenes en formato de nuestro editor preferido, los archivos de objetos en 3d, etc. Es a esta carpeta a donde iremos a buscar los archivos cuando importemos contenido al editor. Y recomiendo que sea hermana de la del proyecto, pues Godot busca actualizaciones en los ficheros que importemos mediante rutas relativas, sincronizando el contenido del juego con el de fuentes, cuando sea necesario. No es mala idea crear un documento de texto en esta carpeta donde detallemos la idea que queremos desarrollar junto con las notas que necesitemos así como documentos adicionales para coordinar el equipo si fuera necesario.
-
-```bash
-/Home/Proyecto HolaMundo/releases
-```
+`/Home/Proyecto HolaMundo/releases`
 
 Por último, aquí almacenaremos las versiones compiladas, queda a discreción de cada uno el uso de subcarpetas como `releases/v.09/Android/ARM` o `releases/GNU-Linux/v.09`
 
@@ -177,10 +165,116 @@ Desde las [[opciones del proyecto]], en el editor. Podremos, mas adelante, cambi
 Con doble click en el proyecto, lo abrimos en el editor.
 
 ### Definir los ajustes del juego
+
+Una vez abierto el editor, podemos cambiar las opciones del proyecto en _Escena > Configuración de Proyecto_.
+
+![ajuste_proyecto]
+
+Cada propiedad puede estar activada o no. Si no lo está se usará el valor por defecto, conservando el valor personalizado si se vuelve a activar.
+
+En estas opciones se pueden tocar mil cosas, entre ellas si se iniciará en pantalla completa, el icono y el nombre del juego, que definimos a la creación. La resolución inicial, la `boot_splash_screen`, etc..
+
+Estos ajustes se verán reflejados en el `engine.cfg`, aunque no sea necesario ni saberlo.
+
+Es importante ser consecuente en como afectan las opciones del juego al funcionamiento del mismo, por ejemplo si utilizas pantalla completa has de pensar en como se adaptará el juego a diferentes aspectos de pantalla.
+
+Señalar que Godot utiliza archivos de texto plano para todo si es posible. Por lo que resulta fácil utilizar sistemas como **git** o mercurial para el control de versiones.
+
+### La estructura del proyecto
+
+Godot está estructurado para maximizar la eficiencia del equipo de desarrollo. Cada miembro puede centrarse en una parte del juego sin estorbar al resto. Se ha hecho un esfuerzo adicional en eliminar el “cuello de botella del programador”. Esto es: que el programador tenga que estar implicado en realizar la integración de cada uno de los cambios.
+
+Con el proyecto creado es momento de empezar a poblarlo. En Godot podemos resumir esto en: crear escenas, ponerlas juntas y hacer que sus elementos interactúen. La filosofía de trabajo comienza por crear las escenas de cada elemento individual del juego, haciendo que:
+
+- Ayude a **clarificar** el proyecto.
+- Haga los elementos **reutilizables**.
+- Los elementos se puedan **modificar fácilmente**.
+- Nos de la máxima **libertad para la estructura del juego**, particularmente para cambiar los principios del diseño, si fuese necesario. Esto facilita el **prototipado rápido** de aplicaciones.
+- Cada escena sea un fichero independiente; hay menos riesgos de conflictos al usar sistemas colaborativos de control de versiones.
+
+Para este propósito, divide tu juego en pequeñas partes y define como interactuarán. Por ejemplo, se necesitará un mundo que estará compuesto por varios objetos como un fondo, elementos que no sean el jugador, obstáculos, enemigos, etc.. Cada uno puede ser creado en una escena separada, incluso pueden ser subdivididos a su vez en otras escenas si son objetos complejos. El principio en el que nos basamos es: Haz más con menos, que deriva en: ***reutiliza, reutiliza y combina***.
+
+Generalmente necesitaremos scripts para dotar de una funcionalidad básica a cada la escena.
+
+### Organización de los archivos
+
+Para empezar no hace falta darle muchas vueltas a este tema, podemos guardarlos todos en el directorio raíz y luego redistribuirlos cuando crezca el proyecto. Aún así:
+Godot se sirve del sistema de ficheros del sistema operativo para organizar el directorio del proyecto y somos libres de elegir la distribución que queramos, aquí tienes las claves para pensar la que vas a usar:
+
+- Godot detecta cualquier directorio que contenga el engine.cfg (incluso uno vacío), como un proyecto.
+- Puedes agrupar los ficheros por función en el juego (nivel1,nivel2,jefe1…) o alternativamente puede hacerse por tipo de recurso (sprites, sonidos, sripts…).
+- Las rutas son relativas. Si necesitas mover ficheros puedes utilizar la función de refactorizar [Renombrar o mover] del menú contextual del recurso para propagar las dependencias.
+
+Partiendo de estas premisas hay quien ha establecido estas aproximaciones:
+
+- Una carpeta para cada tipo de fichero.
+  - **Fácil** para encontrar el recurso que buscas.
+  - **Difícil** de migrar y reusar.
+- Una carpeta para cada asset.
+  - **Fácil** de reutilizar y de gestionar las dependencias.
+  - Estructura de carpetas más profunda.
+- Guardarlo todo dentro de escenas. (Como los .pak de Blender)
+  - Un fichero por asset es **fácil** de gestionar.
+  - **Difícil** de reutilizar y de actualizar los cambios de las fuentes.
+
+La primera opción es mejor para el prototipado rápido de juegos, la segunda para proyectos “pulidos” y la tercera señala que es una técnica utilizada ampliamente para algunos assets, como un polígono en 2D, pintado dentro del editor y asociado a un __sprite__, para hacer su colisión, por ejemplo. Este polígono es un recurso que no está reflejado en un fichero independiente, pues estará dentro de un __sprite__ que será salvado en una escena. Nos recuerdan que no debemos guardar de esta manera datos binarios, osea una imagen, por ejemplo. Es que mejor tener ficheros separados a no ser que se trate de assets que sean “tal para cual” como el ejemplo de una imagen 2D (un __sprite__) y su polígono de colisión.
+
+Siempre podremos utilizar la ***función de refactorizar*** a la hora de reestructurar el proyecto.
+
+## El omnipresente Hola mundo
+
+Siguiendo los pasos anteriores, Abrimos Godot y mediante [[Nuevo Proyecto]], abrimos el explorador de archivos, desde donde podemos crear la carpeta `/Proyecto Hola Mundo/master` que en realidad es la única que vamos a crear dada la sencillez del ejemplo. Y le ponemos el nombre al “Juego”.
+
+Abrimos el proyecto y buscamos la pestaña [[Escena]]. Pulsamos en el símbolo [[+]]. Para añadir un objeto a la escena actual. Seleccionamos un `Label` dentro de la rama `Control`. Y pulsamos  [[Crear]] para añadirlo a la escena.
+
+![add_nodo]
+
+Con esto ya tenemos una escena con un objeto clase `Label` como raíz de la misma. 
+
+Podríamos añadir un texto a la etiqueta desde el editor, tan simple como buscar la pestaña [[Inspector]] y editar el campo `Text`. Pero entonces no tocaríamos nada de código y el ejemplo quedaría demasiado estático. Vamos a establecer y actualizar el texto mediante un __script__.
+
+Al pulsar botón derecho sobre nuestro `Label` en la pestaña [[Escena]], seleccionamos ***Agregar Script*** en el menú contextual y en la ventana de creación activamos ***Script Integrado***. La alternativa es seleccionar una ruta del directorio de juego y un nombre de fichero para el __script__. Pero lo vamos a dejar integrado para mantener el ejemplo lo mas compacto posible. De una manera u otra al aceptar se abrirá el modulo de [[Script]].
+
+Podemos ver el código:
+
+```gd
+extends Label
+
+# member variables here, example:
+# var a=2
+# var b="textvar"
+
+func _ready():
+    # Called every time the node is added to the scene.
+    # Initialization here
+    pass
+```
+
+Lo primero que significa este código inicial es que extendemos de una `Label`, es decir, en este código **vamos a ser una etiqueta**. Por lo que podremos acceder a la propiedad `Text` de la que hablábamos antes, junto con todas las demás que tiene `Label` y sus ancestros.
+
+Luego tenemos comentarios, que empiezan por ‘#’ que explican donde van las variables miembro y como declarar una.
+
+Por último tenemos una función predefinida que se llama `_ready():`
+
+En Godot cada Script se va ejecutando “cuando toca”, y cuando toca es cuando el bucle llamado “`main_loop`” le da paso. El “punto de entrada” en el script es la función `_ready`, la barra baja indica que es una f***unción virtual*** del sistema, de las que hay varias y hablaremos mas adelante. Cada una es llamada por el “`main_loop`” según avance el ciclo de vida del script.
+
+`_ready` se ejecuta una sola vez. Y esta es cuando el **Nodo** que contiene el script esta “listo” para el juego. Es decir cuando se carga la escena que lo contiene y el **Nodo Label** en cuestión. Como verás esto es útil para inicializar variables. Pero no para actualizar cosas constantemente.
+
+Tenemos claro que solo queremos establecer la propiedad Text en nuestra Label una sola vez, por lo que usaremos `_ready`. Dentro de la cual añadimos la linea:
+
+```gd
+set_text("Hola Mundo")
+```
+Podremos darle al botón de [[Play]] o a [[F5]] para ejecutar. No sin antes salvar la escena y establecer la ***Escena Inicial*** para el juego. Lo primero es fácil y lo segundo se encuentra en las Opciones del proyecto, pero de todas maneras al intentar ejecutar sin haberlo hecho nos guiará para que lo hagamos, primero una cosa y luego la otra. Y a la tercera vez de darle al [[Play]] se ejecutará.
+
 ---
 
-[Tanks of Freedom]: http://tof.p1x.in/ "Web oficial de Tanks of Freedom"
+<!-- Links -->
 
+[Juan Linietsky]: https://twitter.com/reduzio
+[Software Freedom Conservacy]: https://sfconservancy.org/
+
+[Tanks of Freedom]: http://tof.p1x.in/ "Web oficial de Tanks of Freedom"
 [UltimoCarnaval]: ./img/otrosJuegos/UltimoCarnaval.png "Ultimo Carnaval"
 [Deponia]: ./img/otrosJuegos/Deponia.png "Deponia"
 [TheMysteryTeam]: ./img/otrosJuegos/TheMysteryTeam.png "The Mystery Team"
@@ -188,5 +282,9 @@ Con doble click en el proyecto, lo abrimos en el editor.
 [DolphinIsland2]: ./img/otrosJuegos/DolphinIsland2.png "Dolphin Island 2"
 [TanksOfFreedom]: ./img/otrosJuegos/TanksOfFreedom.png "Tanks of Freedom"
 
+<!-- Imágenes -->
+
 [editor_3d]: ./img/editor/editor_3d.png "Editor Godot 2.x, pestaña 3D"
 [gestor_proyectos]: ./img/editor/gestor_proyectos.png "Project Manager"
+[ajuste_proyecto]: ./img/editor/editor_ajustes_proyecto.png "Ajustes de Proyecto"
+[add_nodo]: ./img/editor/editor_add_nodo.png "Añadir Nodo"

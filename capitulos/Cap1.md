@@ -1,10 +1,10 @@
 # Desarrollo de Juegos Multiplataforma Utilizando Godot Engine
 
-Proyecto final del ciclo formativo de grado superior en Desarrollo de Aplicaciones Multiplataforma. Cursado en el ***I.E.S. Augustóbriga*** de Navalmoral de la Mata, 
+Proyecto final del ciclo formativo de grado superior en Desarrollo de Aplicaciones Multiplataforma. Cursado en el ***I.E.S. Augustóbriga*** de Navalmoral de la Mata,
 
-Eugenio Hugo Salgüero Jáñez.
+Por Eugenio Hugo Salgüero Jáñez.
 
-## Introducción
+## ***Capítulo 1. Introducción***
 
 ---
 
